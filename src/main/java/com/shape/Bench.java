@@ -40,7 +40,7 @@ public class Bench {
     @Benchmark
     public void testForSecondDesign(Blackhole bh) {
         for (int i = 0; i < 100_000; i++) {
-            Design.concat(a, b);
+            KapustinDesign.concat(a, b);
         }
     }
 
