@@ -1,8 +1,6 @@
 package com.homework.shape;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static java.lang.System.out;
 
@@ -23,7 +21,7 @@ public class Exam {
                 "with complexity in mind. But at some point there were always other issues that\n" +
                 "were considered essential to be added into the mix.";
 
-        String sentience = sentience_1;
+        String sentience = sentience_1 +sentience_2;
 
         long time = System.currentTimeMillis();
 
@@ -56,7 +54,6 @@ public class Exam {
         int sentenceCounter = 0;
         List<Integer> slicer = new ArrayList<>();
         List<Integer> spaces = new ArrayList<>();
-        List<String> words = new ArrayList<>();
 
         for (char letter : sentience.toCharArray()) {
             length++;

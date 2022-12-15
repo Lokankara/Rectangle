@@ -41,6 +41,7 @@ public class Task {
                 .append(cQuadrant(max))
                 .append(middleUp())
                 .append(middleUp())
+                .append(middleDown())
                 .append(middleUp());
 
         System.out.println(multi);

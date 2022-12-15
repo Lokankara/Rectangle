@@ -47,12 +47,11 @@ public class Rectangle {
     }
 
     static String intersection(int ax1, int ay1, int bx1, int by1, int ax2, int ay2, int bx2, int by2) {
-
-        int x1 = Math.max(ax1, bx1);
-        int y1 = Math.max(ay1, by1);
-
-        int x2 = Math.min(ax2, bx2);
-        int y2 = Math.min(ay2, bx2);
+//
+//        int x1 = Math.max(ax1, bx1);
+//        int y1 = Math.max(ay1, by1);
+//        int x2 = Math.min(ax2, bx2);
+//        int y2 = Math.min(ay2, bx2);
 
         String result;
         boolean AF = ax1 == bx2;
@@ -94,6 +93,7 @@ public class Rectangle {
 
         String intersection = intersection(rectangles[0], rectangles[1]);
         System.out.println(intersection);
+        System.out.println(z);
     }
 
     private static Point[] setPoints() {

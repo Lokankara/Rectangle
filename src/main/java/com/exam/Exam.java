@@ -21,7 +21,8 @@ public class Exam {
                 "with complexity in mind. But at some point there were always other issues that\n" +
                 "were considered essential to be added into the mix.";
 
-        String sentience = sentience_1;
+
+        String sentience = sentience_1 + sentience_2;
 
         long time = System.currentTimeMillis();
 
@@ -66,6 +67,8 @@ public class Exam {
                 sentenceCounter++;
                 slicer.add(slice);
                 slice = 0;
+            }else {            	
+            	words.add(String.format("%s", letter));
             }
         }
 
@@ -74,12 +77,10 @@ public class Exam {
         time = System.currentTimeMillis() - time;
         out.printf("Words: %s, length: %s, sentence:%s, time: %s, slice: %s %n", wordCounter, length, sentenceCounter, time, slicer);
         out.println(spaces);
-
-
+        out.println(words);
 
 //        words = sentience.split(" ");
 //        Arrays.sort(words, Comparator.comparingInt(String::length));
 
     }
-
 }
