@@ -1,6 +1,11 @@
 package com.test.heller;
 
 public class Heller {
+	
+	final void last() {
+		
+	}
+	
     public static void main(String[] args) {
 
         //TODO#1 Review Questions

@@ -1,7 +1,7 @@
 package com.test.boyarsky;
 
 public class FeedingSchedule {
-	public static void main(String[] args) {
+	public static void main(String abc[]) {
 		
 		System.out.println("AssesmentTest #4");
 
