@@ -1,4 +1,4 @@
-package com.ua.univer;
+package main.java.com.ua.univer;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

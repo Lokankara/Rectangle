@@ -1,3 +1,5 @@
+find all csv put into array String [] files = {""}
+mapper
 + [Heller] – ch.1, # 6, 7, p.491, # 47,
 + [Heller] – ch.1, # 15, ch.3, # 5,
 + [Heller], ch.1, #4,11,12, p.476, #2,	
