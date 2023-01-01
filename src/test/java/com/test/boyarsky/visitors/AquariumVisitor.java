@@ -1,6 +1,6 @@
 package com.test.boyarsky.visitors;
 
-import com.test.boyarsky.aquarium.jellies.Jelly;
+import com.test.boyarsky.zoo.aquarium.jellies.Jelly;
 
 public class AquariumVisitor {
 

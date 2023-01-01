@@ -2,7 +2,7 @@ package com.test.green;
 
 public class MyAr{
     public static void main(String argv[]) {
-        MyAr m = new MyAr();
+        MyArgs m = new MyArgs();
         m.amethod();
     }
     public void amethod(){

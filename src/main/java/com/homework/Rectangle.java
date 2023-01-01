@@ -1,3 +1,5 @@
+package com.homework;
+
 public class Rectangle {
 //        int ax1, ay1, bx1, by1;
 //        int ax2, ay2, bx2, by2;

@@ -1,81 +1,202 @@
 package com.homework;
 
-// масив розділити на дві колекції:
-//         + від’ємних та додатніх чисел,
-//         - парних та непарних чисел,
-//         - визначити середні арифметичні двох масивів, утворити колекцію з елементів обидвох
-//         масивів, що знаходяться в межах між значеннями середніх арифметичних.
+//divide the array into two collections:
+//+ negative and positive numbers,
+//- even and odd numbers,
+//- determine the arithmetic mean of two arrays, create a collection from the elements of both
+//arrays that are in the range between the arithmetic mean values.
 
-//         2.Із використанням стандартних функціональних інтерфейсів з пакету java.util.function
-//         та лямбда-виразів розділити кілька вхідних колекцій об’єктів класу Car із полем int
-//         maxSpeed на дві колекції з об’єктів, швидкість яких менше (перша колекція) та не
-//         менше (друга колекція) заданого значення.
+//2. Using standard functional interfaces from the java.util.function package
+//and lambda expressions to split multiple input collections of Car objects with an int field
+//maxSpeed ​​into two collections of objects whose speed is less (the first collection) and not
+//less than (second collection) given value.
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
 import java.util.function.BinaryOperator;
+import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class StreamApi {
-    static List<Integer> positive = new ArrayList<>();
-    static List<Integer> negative = new ArrayList<>();
-    static List<Integer> range = new ArrayList<>();
-    static List<Integer> even = new ArrayList<>();
-    static List<Integer> odd = new ArrayList<>();
-    static Integer[] array = {7, 6, 10, -1, 4, 3, -9, 2, -6, -7, -5, 8};
 
-    static ArrayList<Integer> numberList = (ArrayList<Integer>) List.of(array);
-    static Predicate<Integer> isNeg = i -> i < 0;
-    static Predicate<Integer> isPos = i -> i > 0;
-    static Predicate<Integer> isEven = i -> i % 2 == 0;
-    static Predicate<Integer> isOdd = i -> i % 2 != 0;
-    static BinaryOperator<Integer> accumulator = Integer::sum;
+	private static List<Integer> positive = new ArrayList<>();
+	private static List<Integer> negative = new ArrayList<>();
+	private static List<Integer> range = new ArrayList<>();
+	private static List<Integer> even = new ArrayList<>();
+	private static List<Integer> odd = new ArrayList<>();
+	private static final Integer[] array = { 7, 6, 10, -1, 4, 3, -1, 2, -6, -7, -5, 8 };
+	private static final Predicate<Integer> isNeg = i -> i < 0;
+	private static final Predicate<Integer> isPos = i -> i > 0;
+	private static final Predicate<CustomCar> fast = c -> c.getMaxSpeed() > 200;
+	private static final Predicate<CustomCar> slow = fast.negate();
+	private static final Predicate<Integer> isEven = i -> i % 2 == 0;
+	private static final Predicate<Integer> isOdd = i -> i % 2 != 0;
+	private static final BinaryOperator<Integer> accumulator = (a, b) -> a + b;
+	private static final Function<CustomCar, Integer> maxSpeed = CustomCar::getMaxSpeed;
+	private static final ArrayList<Integer> numberList = new ArrayList<>(List.of(array));
 
+	public static void main(String[] args) {
 
-    public static void main(String[] args) {
-        System.out.println("StreamApi");
-        StreamApi api = new StreamApi();
-        api.start();
+		positive = collectBy(numberList, isPos);
+		negative = collectBy(numberList, isNeg);
+		odd = collectBy(numberList, isOdd);
+		even = collectBy(numberList, isEven);
 
-        int averagePos = sum(positive.stream()).get() / positive.size();
-        int averageNeg = sum(negative.stream()).get() / negative.size();
-//        numberList.stream()range(averageNeg, averagePos).forEach(range::add);
-        int[] runs = IntStream.range(0, array.length)
-                .filter(i -> i == 0 || array[i] > array[i])
-                .toArray();
-        System.out.println(Arrays.toString(runs));
+		double averagePos = average(positive);
+		double averageNeg = average(negative);
 
-        System.out.println("average positive = " + averagePos);
-        System.out.println("average negative = " + averageNeg);
-        System.out.printf("Range number list between %d and %d: %s", averagePos, averageNeg, range);
-    }
+		System.out.printf("positive: %s%n", positive);
+		System.out.printf("negative: %s%n", negative);
+		System.out.printf("odd: %s%n", odd);
+		System.out.printf("even: %s%n", even);
 
-    public static Optional<Integer> sum(Stream<Integer> stream) {
-        return stream.reduce(accumulator);
-    }
+		System.out.println("average positive = " + averagePos);
+		System.out.println("average negative = " + averageNeg);
 
-    public void start() {
-        System.out.println("start");
+		ArrayList<CustomCar> cars = new ArrayList<>();
+		cars.add(new CustomCar("BMW", "Serg", 12000, 2020, 220));
+		cars.add(new CustomCar("Porsche", "Serg", 20000, 2022, 250));
+		cars.add(new CustomCar("Porsche", "", 9000, 2010, 180));
+		cars.add(new CustomCar("Kia", "", 3000, 2000, 120));
 
-        numberList.stream().filter(isPos)
-                .forEach(positive::add);
+		List<CustomCar> sortedCarsByFastSpeed = sortBy(cars, fast);
+		List<CustomCar> sortedCarsBySlowSpeed = sortBy(cars, slow);
 
-        numberList.stream()
-                .filter(isNeg)
-                .forEach(negative::add);
+		System.out.println(String.format("Cars which speed more than 200: %s", sortedCarsByFastSpeed));
+		System.out.println(String.format("Cars which speed less than 200: %s", sortedCarsBySlowSpeed));
 
-        numberList.stream()
-                .filter(isEven)
-                .forEach(even::add);
+		range = numberList.stream().sorted().collect(Collectors.toList());
+//		System.out.printf("Range number list between %d and %d: %s", averagePos, averageNeg, range);
+	}
+	private static List<CustomCar> sortBy(
+	ArrayList<CustomCar> auto, 
+	Predicate<CustomCar> predicate) {
+		return auto
+		.stream()
+		.filter(predicate)
+		.collect(Collectors.toList());
+	}
 
-        numberList.stream()
-                .filter(isOdd)
-                .forEach(odd::add);
+	private static List<Integer> collectBy(
+	ArrayList<Integer> integers, 
+	Predicate<Integer> predicate) {
+		return integers
+		.stream()
+		.filter(predicate)
+		.collect(Collectors.toList());
+	}
 
-    }
+	public static double average(
+	List<Integer> integers) {
+		return integers
+		.stream()
+		.reduce(accumulator).get() 
+		/ integers.size();
+	}
+}
+
+interface Car {
+	void run();
+}
+
+class CustomCar implements Car {
+
+	private String model;
+	private String owner = "";
+	private int price;
+	private int maxSpeed;
+	private int produceYear;
+
+	public boolean isSerg() {
+		return "Serg".equals(owner) ? true : false;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getProduceYear() {
+		return produceYear;
+	}
+
+	public void setProduceYear(int produceYear) {
+		this.produceYear = produceYear;
+	}
+
+	public int getMaxSpeed() {
+		return maxSpeed;
+	}
+
+	public void setMaxSpeed(int maxSpeed) {
+		this.maxSpeed = maxSpeed;
+	}
+
+	public CustomCar(String model, String owner, int price, int produceYear,  int maxSpeed) {
+		super();
+		this.model = model;
+		this.owner = owner;
+		this.price = price;
+		this.maxSpeed = maxSpeed;
+		this.produceYear = produceYear;
+	}
+	
+	public CustomCar() {
+		super();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(
+		maxSpeed, model, owner, price, produceYear);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CustomCar other = (CustomCar) obj;
+		return maxSpeed == other.maxSpeed 
+		&& Objects.equals(model, other.model) 
+		&& Objects.equals(owner, other.owner) 
+		&& price == other.price 
+		&& produceYear == other.produceYear;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return String.format(
+		"CustomCar [model=%s, owner=%s, price=%d, maxSpeed=%d, produceYear=%d]", 
+		model, owner, price, maxSpeed, produceYear);
+	}
+	@Override
+	public void run() {
+	}
 }

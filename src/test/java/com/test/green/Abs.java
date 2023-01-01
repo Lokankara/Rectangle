@@ -8,7 +8,7 @@ abstract class Base{
 }
 public class Abs extends Base{
     public static void main(String argv[]){
-        Abs a = new Abs();
+        Abcd a = new Abcd();
         a.method();
         System.out.println(" To write optimised code for performance in a language such as C/C++");
 
