@@ -1,6 +1,6 @@
 package com.test.boyarsky.zoo;
 
-class Mammal {
+public class Mammal {
 	public Mammal(int age) {
 		System.out.print("Mammal ");
 	}

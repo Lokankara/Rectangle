@@ -40,29 +40,50 @@ p.336, #9, 10, p.341, #23, p.342, #24,
 [Sanghera] – p.333, # 1,
 [Sanghera], p.335, #6, p.337, #12.
 [Sanghera], p.354, #60,
+[Sanghera], ch.5, #9, 10, practiceExam, # 7,
+[Sanghera], ch.3, #4, 9.
+
 
 + [Boyarsky] - ch.1, # 5, 6, 7, 
 + [Boyarsky] - ch.1, # 11, 12, 13.
 + [Boyarsky] - ch.1, # 14, 18, 
 + [Boyarsky] -  ch.1, # 21, 
- + ch.4, # 10, 
- - 12,
- ch.4, # 14.
- ch.4, # 22, 23,
- [Boyarsky] - ch.4, # 7,
-  [Boyarsky] - ch.4, # 6.
- [Boyarsky], ch.4, # 21, ch.5, # 2,
- [Boyarsky] - AssesmentTest, # 6, ch.4, # 16.
-  [Boyarsky] - AssesmentTest, # 12, ch.4, # 18, 20. 
+- [Boyarsky] - ch.4, # 6, #7, #10, 12, #14,
++ [Boyarsky] - # 21, #22, 23,
++ [Boyarsky],  ch.5, # 2,
++ [Boyarsky] - AssesmentTest, # 6, ch.4, # 16.
++ [Boyarsky] - AssesmentTest, # 12, ch.4, # 18, 20. 
 
-[SierraExam]: PE1, #28, PE2, # 43, PE3, #11,
+PracticeExam1, #4, #6, 17, #28, 
+[SierraExam], PE1, # 33, 51, 
+[SierraExam], PE1  40, 54
+              PE2, #33, PE4, #32, 37,
+              PE2, #17, 35, 54, PE3, #15, 16, 55, PE4, #8, 51,
+[SierraExam]:  PE2, # 43, PE3, #11,
 [SierraExam], PE2, #18, PE4, #16,
 [SierraExam], PE2, #2,
-[SierraExam], AsT1, #1, AsT2, #7, PE1, #47, PE2, #31, 47, PE3, #23, PE4, [SierraExam], PE3, #57,
+[SierraExam], AsT1, #1, AsT2, #7, PE1, #47, PE2, #31, 47, PE3, #23, PE4, 
 [SierraExam], PE3, #57, 
 [SierraExam], PE2, #20, PE4, #25, 
 [SierraExam], PE2, #4, 
+ [SierraExam], PE3, #57, 
+[SierraExam], PE2, #20, PE4, #25,
+[SierraExam], PE2, #4,
+[SierraExam] – 
+PracticeExam2, # 12, 
+PracticeExam 2, # 15,
+PracticeExam3, # 12, 22, 
+PracticeExam4, # 14, 27,
+ PracticeExam 4, # 1, 23,
+
+[Sierra5], ch1, # 2,
+[Sierra5], ch.2, #2, 6,
+
+[Sierra5] – ch1, # 1, 3, ch2, # 3,
+[Sierra6] – ch1, # 6, ch.4, #10,
  
+[Sierra5], ch.2, #13, 14, ch.3, #7,
+[Sierra6], ch.2, #8, 9,
 
 [Sierra7] - ch.3, # 6, 12,
 [Sierra7] – ch.1, # 9,
@@ -70,6 +91,7 @@ p.336, #9, 10, p.341, #23, p.342, #24,
 
 [Sierra5], ch.10, #3, 4,
 [Sierra5], ch.2, #8, 10.
+
 
 [Mala Gupta] – MockExam, # 42, 68,
 [Mala Gupta] – ch.5, # 4.
@@ -91,3 +113,43 @@ p.336, #9, 10, p.341, #23, p.342, #24,
 
 [Reese] – ch.6, # 6, #19, 60, 
 [Reese] – ch.7, # 1,
+
+
+### to string 
+
+[Sanghera], ch.4, #5, 6, ch.5, #15, p.342, #25, 
+[Jaworsky], p.71, #1,
+[Raposa], ch.2, #15, 23, ch.6, #7, 
+ [Heller], ch.3, #7, 9, 10, 11, 16, ch.4, #5, ch.6, #11, p.487, #36
+
+[Sanghera], p.337, #13, p.338, #15,
+[Heller], p.490, #45,
+[Raposa], AsT, #33, ch.6, #6,
+[Ganesh], MockExam1, # 9,
+[Mala Gupta] – MockExam, # 6, 71
+
+[Sanghera], p.341, #22,
+[Heller], p.478, #7,
+[Sierra5], ch.2, #8, 10.
+
+[Raposa], ch.6, #15, 16,
+[Heller], p.486-487, #34, 35, 
+[Heller], ch.2, # 17, ch.4, # 1, 6, 20,
+[Jaworsky], p.56, #6.
+[Raposa], ch.3, #5,
+[Sanghera], p.338, #14, p.339, #18, 
+[Raposa], ch.6, #12,
+[Heller], AsT, #7, 9, 10, ch.3, # 3, 14, 18, 19,
+[Green], #6.
+
+[Heller], ch.4, #8, 9, 10,
+[Green], # 4, 
+[Raposа], ch.6, #9, 10, 11, 19, 20, AsT, # 17,
+[Jaworsky], p.15, #12, p.72, #21,
+[Heller], ch.3, # 12.
+
+
+### Interface Comparable, Comparator.
+
+[Raposа], ch.2, #10, 24, AsT, # 24, 
+[Heller], ch.3, # 13, ch.4, # 12, AsT, # 15,

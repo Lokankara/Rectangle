@@ -10,6 +10,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <deps.jmh.version>1.35</deps.jmh.version>
+        <icu.version>64.2</icu.version>
     </properties>
 
     <dependencies>
@@ -28,6 +29,12 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <version>5.9.0</version>
             <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>${icu.version}</version>
         </dependency>
     </dependencies>
 

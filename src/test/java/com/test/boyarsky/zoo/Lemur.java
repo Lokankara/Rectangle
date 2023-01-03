@@ -8,6 +8,7 @@ class Primate {
 
 interface HasTail {
 	public boolean isTailStriped();
+	public int getTailLength();
 }
 
 public class Lemur extends Primate implements HasTail {
@@ -24,5 +25,11 @@ public class Lemur extends Primate implements HasTail {
 		System.out.println(hasTail.isTailStriped());
 		Primate primate = lemur;
 		System.out.println(primate.hasHair());
+	}
+
+	@Override
+	public int getTailLength() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

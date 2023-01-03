@@ -1,4 +1,4 @@
- [Sanghera] - ch.4, # 11,
+﻿ [Sanghera] - ch.4, # 11,
  [Sierra7] - ch.3, # 6, 12,
  [Heller] – ch.1, # 6, 7, p.491, # 47,
  [Raposa] – ch.1, # 9,
@@ -77,3 +77,59 @@
 [Raposa], ch.2, #15, 23, ch.6, #7,
  
 [Heller], ch.3, #7, 9, 10, 11, 16,  ch.4, #5,  ch.6, #11, p.487, #36.
+
+
+### to string 
+ [SierraExam], PE3, #57, 
+[Sanghera], ch.4, #5, 6, ch.5, #15, p.342, #25, 
+[Jaworsky], p.71, #1,
+[Raposa], ch.2, #15, 23, ch.6, #7, 
+ [Heller], ch.3, #7, 9, 10, 11, 16, ch.4, #5, ch.6, #11, p.487, #36
+
+[SierraExam], PE2, #20, PE4, #25,
+[Sanghera], p.337, #13, p.338, #15,
+[Heller], p.490, #45,
+[Raposa], AsT, #33, ch.6, #6,
+[Ganesh], MockExam1, # 9,
+[Mala Gupta] – MockExam, # 6, 71
+
+[SierraExam], PE2, #4,
+[Sanghera], p.341, #22,
+[Heller], p.478, #7,
+[Sierra5], ch.2, #8, 10.
+
+[SierraExam], PE1, # 33, 51, PE2, #17, 35, 54, PE3, #15, 16, 55, PE4, #8, 51,
+[Sierra5], ch.2, #13, 14, ch.3, #7,
+[Sierra6], ch.2, #8, 9,
+[Raposa], ch.6, #15, 16,
+[Heller], p.486-487, #34, 35, 
+[Heller], ch.2, # 17, ch.4, # 1, 6, 20,
+[Jaworsky], p.56, #6.
+
+[SierraExam], PE1, #4, 40, PE2, #33, PE4, #32, 37,
+[Sierra5], ch.2, #2, 6,
+[Raposa], ch.3, #5,
+[Sanghera], p.338, #14, p.339, #18, 
+[Raposa], ch.6, #12,
+[Heller], AsT, #7, 9, 10, ch.3, # 3, 14, 18, 19,
+[Green], #6.
+
+[SierraExam], PracticeExam 2, # 15, PracticeExam 4, # 1, 23,
+[Sierra5], ch1, # 2,
+[Heller], ch.4, #8, 9, 10,
+[Green], # 4, 
+[Raposа], ch.6, #9, 10, 11, 19, 20, AsT, # 17,
+[Jaworsky], p.15, #12, p.72, #21,
+[Heller], ch.3, # 12.
+
+
+### . Інтерфейси. Інтерфейси Comparable, Comparator.
+
+[SierraExam] – PracticeExam1, # 6, 17, 54, PracticeExam2, # 12, PracticeExam3, # 12, 22, PracticeExam4, # 14, 27,
+[Sierra5] – ch1, # 1, 3, ch2, # 3,
+[Sierra6] – ch1, # 6, ch.4, #10,
+[Sanghera], ch.5, #9, 10, practiceExam, # 7,
+[Raposа], ch.2, #10, 24, AsT, # 24, 
+[Heller], ch.3, # 13, ch.4, # 12, AsT, # 15,
+[Sanghera], ch.3, #4, 9.
+

@@ -24,4 +24,12 @@ abstract public class Bird {
 	public static int getRefCount() {
 		return referenceCount;
 	}
+
+	public final boolean hasFeathers() {
+		return true;
+	}
+
+	public void eat(int food) {
+		System.out.println("Bird is eating " + food + " units of food");
+	}
 }

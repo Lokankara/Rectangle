@@ -13,6 +13,11 @@ public class Gorilla extends Animal {
 	}
 
 	public Gorilla() {
-		// TODO Auto-generated constructor stub
+		super();
+	}
+
+	@Override
+	public int getAge() {
+		return 100;
 	}
 }

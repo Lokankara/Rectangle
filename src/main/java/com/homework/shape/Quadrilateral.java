@@ -1,4 +1,4 @@
-package com.homework.shape;
+//package com.homework.shape;
 //package com.shape;
 //
 //import static java.lang.StrictMath.pow;
