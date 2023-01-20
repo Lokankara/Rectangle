@@ -13,6 +13,10 @@ public class Employee {
 		id = 0;
 	}
 
+	public Employee(String string) {
+		this.name = string;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -33,9 +37,15 @@ public class Employee {
 	public static int getNextId() {
 		return nextId;
 	}
-	
-	public void raiseSalary(double byPercent){
-	double raise = salary * byPercent / 100;
-	salary += raise;
+
+	public void raiseSalary(double byPercent) {
+		double raise = salary * byPercent / 100;
+		salary += raise;
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [name=" + name + ", salary=" + salary + ", id=" + id + "]";
+	}
+	
 }

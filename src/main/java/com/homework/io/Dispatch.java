@@ -71,7 +71,6 @@ public class Dispatch {
 		} catch (IOException e) {
 			System.out.println("Files not found. ");
 		}
-
 	}
 
 	private static void readFile(String csvFile) {
@@ -79,7 +78,7 @@ public class Dispatch {
 				BufferedReader csvReader = new BufferedReader(fileReader)) {
 			String row;
 			while ((row = csvReader.readLine()) != null) {
-				if(row.contains("10.")) {
+				if(row.contains("public class")) {
 					System.out.println(row);
 
 				}
