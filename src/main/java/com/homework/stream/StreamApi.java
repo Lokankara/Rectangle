@@ -58,7 +58,7 @@ public class StreamApi {
 		System.out.println(String.format("Cars which speed less than 200: %s", sortedCarsBySlowSpeed));
 
 		range = numberList.stream().sorted().collect(Collectors.toList());
-//		System.out.printf("Range number list between %d and %d: %s", averagePos, averageNeg, range);
+		System.out.printf("Range number list between %d and %d: %s %s", averagePos, averageNeg, range, maxSpeed);
 	}
 	private static List<CustomCar> sortBy(
 	ArrayList<CustomCar> auto, 

@@ -1,19 +1,14 @@
-/**
- * 
- */
 package com.homework.io;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.File;
 
 import org.apache.tika.exception.TikaException;
-// Importing the required classes of Apache POI   
 import org.apache.tika.metadata.Metadata;  
 import org.apache.tika.sax.BodyContentHandler;
 import org.xml.sax.SAXException;
 import org.apache.tika.parser.pdf.PDFParser;  
 import org.apache.tika.parser.ParseContext; 
-import java.io.File;
 
 /**
  * @author PPoliak
@@ -55,7 +50,6 @@ public class PdfReader {
 		pp.parse(fs, ch, md, pc);  
 		// Displaying the contents   
 		// of the pdf file by invoking the toString() method  
-		String str = ch.toString();  
 		System.out.println("Extracting the contents from the file: \n" + ch.toString());  
 		}  
 		}  

@@ -164,7 +164,7 @@ public class Dispatch {
 	}
 }
 
-class Controller {
+class Controllers {
 	public static void sorting(List<Bottle> bottles, String string) {
 		switch (string) {
 		case "material":

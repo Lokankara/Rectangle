@@ -1,6 +1,7 @@
 package com.homework.shape;
 
 import java.util.Arrays;
+
 import static java.lang.StrictMath.pow;
 import static java.lang.StrictMath.sqrt;
 
@@ -8,7 +9,7 @@ import static java.lang.StrictMath.sqrt;
  * @author PPoliak
  *
  */
-public class Shapes {
+ class Shapes {
 
 	private static final int LENGTH = 4;
 
@@ -342,8 +343,7 @@ class Triangle extends Shape {
 
 	@Override
 	public String toString() {
-		return "Triangle [ab=" + ab + ", bc=" + bc + ", ca=" + ca + ", ba=" + ba
-				+ "]";
+		return String.format("Triangle [ab=%s, bc=%s, ca=%s, ba=%f, ac=%s]", ab, bc, ca, ba, ac);
 	}
 
 	public String bQuadrant(String fill) {
