@@ -49,7 +49,7 @@ class Point extends Shape {
 	}
 	@Override
 	public String toString() {
-		return String.format("Point  (%d, %d)", x, y);
+		return String.format("Point (%d, %d)", x, y);
 	}
 	@Override
 	public long setCounter(ArrayList<? extends Shape> lines) {

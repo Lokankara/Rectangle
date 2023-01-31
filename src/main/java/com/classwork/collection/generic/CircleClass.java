@@ -1,4 +1,4 @@
-package com.classwork.interfaceVsAbstractClass;
+package com.classwork.collection.generic;
 
 import java.util.Arrays;
 import java.util.List;

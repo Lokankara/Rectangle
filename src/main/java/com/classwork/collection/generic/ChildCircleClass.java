@@ -1,4 +1,4 @@
-package com.classwork.interfaceVsAbstractClass;
+package com.classwork.collection.generic;
 
 public class ChildCircleClass extends CircleClass {
 

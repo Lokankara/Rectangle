@@ -13,67 +13,75 @@ import java.util.HashMap;
 class Controller {
 
 	private final Dao dao;
+	private final ArrayList<Point> points;
+	private final ArrayList<Line> lines;
 
 	public Controller() {
 		this.dao = new Dao();
+		this.points = dao.getPoints();
+		this.lines = dao.getLines();
 	}
 
-	public ArrayList<Shape> getPoints() {
-		return dao.getPoints();
-	}
-
-	public ArrayList<Shape> getLines() {
-		return dao.getLines();
-	}
-
-	public void write(String outputfile, HashMap<Shape, Long> shapeMap) {
+	public void write(String outputfile, Object... objects) {
 
 		try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(outputfile))) {
-			output.writeObject(shapeMap);
+
+			output.writeObject(objects);
+
 			System.out.printf("File %s was written%n", outputfile);
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
-	public HashMap<Shape, Long> read(String outputfile) {
-		
-		HashMap<Shape, Long> shapes = new HashMap<>();
+	public void read(String outputfile) {
 
 		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(outputfile))) {
-			shapes = (HashMap<Shape, Long>) input.readObject();
+			Object[] readObject = (Object[]) input.readObject();
+
+			for (var object : readObject) {
+				if (object instanceof HashMap) {
+					HashMap map = ((HashMap) object);
+					for (var key : map.keySet()) {
+						if (key instanceof Line) {
+							dao.addToLines((Line) key, (Long) map.get(key));
+						}
+						if (key instanceof Point) {
+							dao.addToPoints((Point) key, (Long) map.get(key));
+						}
+					}
+				}
+			}
 			System.out.printf("File %s was read%n", outputfile);
 		} catch (IOException | ClassNotFoundException e) {
 			System.out.printf("%s%n", e.getMessage());
 		}
-		return shapes;
+//		return shapes;
 	}
 
-	public HashMap<Shape, Long> joinToMap(ArrayList<Shape> points, ArrayList<Shape> lines) {
+	public void check(HashMap map) {
 
-		HashMap<Shape, Long> shapeMap = new HashMap<>();
-		HashMap<Shape, Long> pointMap = dao.getPointsMap();
-		HashMap<Shape, Long> lineMap = dao.getLineMap();
-
-		points.forEach(point -> pointMap.put(point, point.setCounter(lines)));
-		lines.forEach(line -> lineMap.put(line, line.setCounter(points)));
-
-		shapeMap.putAll(lineMap);
-		shapeMap.putAll(pointMap);
-		return shapeMap;
-	}
-
-	public void check(HashMap<Shape, Long> maps) {
-
-		for (Shape shape : maps.keySet()) {
-			if (shape instanceof Line) {
-				assertEquals(dao.getLineMap().get(shape), maps.get(shape));
-				System.out.printf("%s intersections %s object(s)%n", shape, maps.get(shape));
+		for (var key : map.keySet()) {
+			if (key instanceof Line) {
+				assertEquals(dao.getLineMap().get(key), map.get(key));
+				System.out.printf("%s intersections %s object(s)%n", key, map.get(key));
 			}
-			if (shape instanceof Point) {
-				assertEquals(dao.getPointsMap().get(shape), maps.get(shape));
-				System.out.printf("%s intersections %s object(s)%n", shape, maps.get(shape));
+			if (key instanceof Point) {
+				assertEquals(dao.getPointMap().get(key), map.get(key));
+				System.out.printf("%s intersections %s object(s)%n", key, map.get(key));
 			}
 		}
+	}
+
+	public HashMap<Point, Long> getPointMap() {
+		HashMap<Point, Long> pointMap = new HashMap<>();
+		points.forEach(point -> pointMap.put(point, point.setCounter(lines)));
+		return pointMap;
+	}
+
+	public HashMap<Line, Long> getLineMap() {
+		HashMap<Line, Long> lineMap = new HashMap<>();
+		lines.forEach(line -> lineMap.put(line, line.setCounter(points)));
+		return lineMap;
 	}
 }

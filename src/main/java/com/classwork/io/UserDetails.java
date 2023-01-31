@@ -1,4 +1,4 @@
-package com.classwork;
+package com.classwork.io;
 
 import java.io.Serializable;
 import java.text.StringCharacterIterator;

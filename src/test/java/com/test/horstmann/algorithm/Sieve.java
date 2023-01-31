@@ -21,6 +21,7 @@ public class Sieve {
 		i = 2;
 		while (i * i <= n) {
 			if (bitSet.get(i)) {
+				System.out.println(i);
 				count++;
 				int k = 2 * i;
 				while (k <= n) {

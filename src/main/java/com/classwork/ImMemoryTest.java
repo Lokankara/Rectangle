@@ -1,5 +1,7 @@
 package com.classwork;
 
+import com.classwork.io.SerializableClass;
+
 public class ImMemoryTest 
 {
  

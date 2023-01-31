@@ -1,116 +1,121 @@
 //package com.homework.collections;
-//import static org.junit.Assert.assertEquals;
 //
+//import java.util.ArrayList;
+//import java.util.Objects;
+//import java.io.Serializable;
+//import java.util.Comparator;
+//import java.util.Arrays;
+//import java.util.HashMap;
+//import java.util.Random;
 //import java.io.FileInputStream;
 //import java.io.FileOutputStream;
 //import java.io.IOException;
 //import java.io.ObjectInputStream;
 //import java.io.ObjectOutputStream;
-//import java.io.Serializable;
-//import java.util.ArrayList;
-//import java.util.Comparator;
-//import java.util.Objects;
-//
-//import java.util.Arrays;
-//import java.util.HashMap;
-//import java.util.Random;
+//import static org.junit.Assert.assertEquals;
 //
 //public class Main {
 //
 //	private final static String outputfile = "LINES";
 //	private final static Controller controller = new Controller();
-//	private final static ArrayList<Shape> points = controller.getPoints();
-//	private final static ArrayList<Shape> lines = controller.getLines();
 //
 //	public static void main(String[] args) {
 //
-//		HashMap<Shape, Long> maps = controller.joinToMap(points, lines);
-//		controller.write(outputfile, maps);
+//		HashMap<Point, Long> pointMap = controller.getPointMap();
+//		HashMap<Line, Long> lineMap = controller.getLineMap();
 //
-//		HashMap<Shape, Long> mapsFromFile = controller.read(outputfile);
+//		controller.write(outputfile, pointMap, lineMap);
+//		controller.read(outputfile);
 //
-//		controller.check(mapsFromFile);
+//		controller.check(pointMap);
+//		controller.check(lineMap);
 //	}
 //}
 //
 //class Controller {
 //
 //	private final Dao dao;
+//	private final ArrayList<Point> points;
+//	private final ArrayList<Line> lines;
 //
 //	public Controller() {
 //		this.dao = new Dao();
+//		this.points = dao.getPoints();
+//		this.lines = dao.getLines();
 //	}
 //
-//	public ArrayList<Shape> getPoints() {
-//		return dao.getPoints();
-//	}
-//
-//	public ArrayList<Shape> getLines() {
-//		return dao.getLines();
-//	}
-//
-//	public void write(String outputfile, HashMap<Shape, Long> shapeMap) {
+//	public void write(String outputfile, Object... objects) {
 //
 //		try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(outputfile))) {
-//			output.writeObject(shapeMap);
+//
+//			output.writeObject(objects);
+//
 //			System.out.printf("File %s was written%n", outputfile);
 //		} catch (IOException e) {
 //			System.out.println(e.getMessage());
 //		}
 //	}
 //
-//	public HashMap<Shape, Long> read(String outputfile) {
-//		
-//		HashMap<Shape, Long> shapes = new HashMap<>();
+//	public void read(String outputfile) {
 //
 //		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(outputfile))) {
-//			shapes = (HashMap<Shape, Long>) input.readObject();
+//			Object[] readObject = (Object[]) input.readObject();
+//
+//			for (var object : readObject) {
+//				if (object instanceof HashMap) {
+//					HashMap map = ((HashMap) object);
+//					for (var key : map.keySet()) {
+//						if (key instanceof Line) {
+//							dao.addToLines((Line) key, (Long) map.get(key));
+//						}
+//						if (key instanceof Point) {
+//							dao.addToPoints((Point) key, (Long) map.get(key));
+//						}
+//					}
+//				}
+//			}
 //			System.out.printf("File %s was read%n", outputfile);
 //		} catch (IOException | ClassNotFoundException e) {
 //			System.out.printf("%s%n", e.getMessage());
 //		}
-//		return shapes;
 //	}
 //
-//	public HashMap<Shape, Long> joinToMap(ArrayList<Shape> points, ArrayList<Shape> lines) {
+//	public void check(HashMap map) {
 //
-//		HashMap<Shape, Long> shapeMap = new HashMap<>();
-//		HashMap<Shape, Long> pointMap = dao.getPointsMap();
-//		HashMap<Shape, Long> lineMap = dao.getLineMap();
-//
-//		points.forEach(point -> pointMap.put(point, point.setCounter(lines)));
-//		lines.forEach(line -> lineMap.put(line, line.setCounter(points)));
-//
-//		shapeMap.putAll(lineMap);
-//		shapeMap.putAll(pointMap);
-//		return shapeMap;
-//	}
-//
-//	public void check(HashMap<Shape, Long> maps) {
-//
-//		for (Shape shape : maps.keySet()) {
-//			if (shape instanceof Line) {
-//				assertEquals(dao.getLineMap().get(shape), maps.get(shape));
-//				System.out.printf("%s intersections %s object(s)%n", shape, maps.get(shape));
+//		for (var key : map.keySet()) {
+//			if (key instanceof Line) {
+//				assertEquals(dao.getLineMap().get(key), map.get(key));
+//				System.out.printf("%s intersections %s object(s)%n", key, map.get(key));
 //			}
-//			if (shape instanceof Point) {
-//				assertEquals(dao.getPointsMap().get(shape), maps.get(shape));
-//				System.out.printf("%s intersections %s object(s)%n", shape, maps.get(shape));
+//			if (key instanceof Point) {
+//				assertEquals(dao.getPointMap().get(key), map.get(key));
+//				System.out.printf("%s intersections %s object(s)%n", key, map.get(key));
 //			}
 //		}
 //	}
-//}
 //
+//	public HashMap<Point, Long> getPointMap() {
+//		HashMap<Point, Long> pointMap = new HashMap<>();
+//		points.forEach(point -> pointMap.put(point, point.setCounter(lines)));
+//		return pointMap;
+//	}
+//
+//	public HashMap<Line, Long> getLineMap() {
+//		HashMap<Line, Long> lineMap = new HashMap<>();
+//		lines.forEach(line -> lineMap.put(line, line.setCounter(points)));
+//		return lineMap;
+//	}
+//}
 //
 //class Dao {
 //	
 //	private final int max = 5;
 //	private final Random random = new Random();
-//	private final HashMap<Shape, Long> lineMap = new HashMap<>();
-//	private final HashMap<Shape, Long> pointMap = new HashMap<>();
-//
-//	public ArrayList<Shape> getPoints() {
-//		var points = new ArrayList<Shape>(Arrays.asList(
+//	private final HashMap<Line, Long> lineMapFromFile = new HashMap<>();
+//	private final HashMap<Point, Long> pointMapFromFile = new HashMap<>();
+//	
+//	public ArrayList<Point> getPoints() {
+//		var points = new ArrayList<Point>(Arrays.asList(
 //				new Point(1, 3), 
 //				new Point(3, 2), 
 //				new Point(0, 1), 
@@ -121,17 +126,17 @@
 //		return points;
 //	}
 //
-//	public ArrayList<Shape> getLines() {
-//		return new ArrayList<Shape>(Arrays.asList(
+//	public ArrayList<Line> getLines() {
+//		return new ArrayList<Line>(Arrays.asList(
 //				new Line(3, 1), 
 //				new Line(4, 5), 
 //				new Line(2, -1), 
 //				new Line(2, 1)));
 //	}
 //	
-//	private ArrayList<Shape> generatePoint() {
+//	private ArrayList<Point> generatePoint() {
 //		
-//		return new ArrayList<Shape>(Arrays.asList(
+//		return new ArrayList<Point>(Arrays.asList(
 //				new Point(random.nextInt(max), random.nextInt(max)), 
 //				new Point(random.nextInt(max), random.nextInt(max)), 
 //				new Point(random.nextInt(max), random.nextInt(max)), 
@@ -140,12 +145,20 @@
 //				));		
 //	}
 //
-//	public HashMap<Shape, Long> getPointsMap() {
-//		return pointMap;
+//	public HashMap<Line, Long> getLineMap() {
+//		return lineMapFromFile;
 //	}
 //
-//	public HashMap<Shape, Long> getLineMap() {
-//		return lineMap;
+//	public HashMap<Point, Long> getPointMap() {
+//		return pointMapFromFile;
+//	}
+//
+//	public void addToLines(Line key, Long value) {
+//		lineMapFromFile.put(key, value);
+//	}
+//
+//	public void addToPoints(Point key, Long value) {
+//		pointMapFromFile.put(key, value);
 //	}
 //}
 //
@@ -202,7 +215,7 @@
 //	}
 //	@Override
 //	public String toString() {
-//		return String.format("Line  f(%s%dx%s%d)", k < 0 ? "-" : "", k, b < 0 ? "" : "+", b);
+//		return String.format("Line f(%s%dx%s%d)", k < 0 ? "-" : "", k, b < 0 ? "" : "+", b);
 //	}
 //	@Override
 //	public long setCounter(ArrayList<? extends Shape> points) {
@@ -217,7 +230,6 @@
 //		return (o.y() - a.y()) / (b.y() - a.y()) - (o.x() - a.x()) / (b.x() - a.x());
 //	}
 //}
-//
 //class Point extends Shape {
 //	private static final long serialVersionUID = 78291364212465L;
 //	private int x;
@@ -264,7 +276,7 @@
 //	}
 //	@Override
 //	public String toString() {
-//		return String.format("Point  (%d, %d)", x, y);
+//		return String.format("Point (%d, %d)", x, y);
 //	}
 //	@Override
 //	public long setCounter(ArrayList<? extends Shape> lines) {

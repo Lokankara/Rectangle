@@ -1,4 +1,4 @@
-package com.classwork;
+package com.classwork.io;
 
 import java.io.Externalizable;
 import java.io.IOException;

@@ -1,12 +1,12 @@
-package com.classwork;
+package com.classwork.collection.backed;
 
 class Factory {
 	public static void main(String[] args) {
-//		DogFactory factory = new DogFactory();
-//		DogFactory pitbullfactory = new PitbullFactory();
-//		Dog dog = factory.create();
-//		Dog pitbull = pitbullfactory.create();
-//		Pitbull castPitbull = (Pitbull) pitbullfactory.create();
+		DogFactory factory = new DogFactory();
+		DogFactory pitbullfactory = new PitbullFactory();
+		Dog dog = factory.create();
+		Dog pitbull = pitbullfactory.create();
+		Pitbull castPitbull = (Pitbull) pitbullfactory.create();
 	}
 }
 

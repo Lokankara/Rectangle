@@ -57,7 +57,7 @@ class Line extends Shape implements Comparator<Point>{
 	}
 	@Override
 	public String toString() {
-		return String.format("Line  f(%s%dx%s%d)", k < 0 ? "-" : "", k, b < 0 ? "" : "+", b);
+		return String.format("Line f(%s%dx%s%d)", k < 0 ? "-" : "", k, b < 0 ? "" : "+", b);
 	}
 	@Override
 	public long setCounter(ArrayList<? extends Shape> points) {

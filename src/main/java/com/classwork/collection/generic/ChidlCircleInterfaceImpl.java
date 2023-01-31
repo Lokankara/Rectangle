@@ -1,4 +1,4 @@
-package com.classwork.interfaceVsAbstractClass;
+package com.classwork.collection.generic;
 
 public class ChidlCircleInterfaceImpl implements CircleInterface {
     private String color;
