@@ -64,7 +64,7 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
         </dependency>
     </dependencies>
 
-    <build>
+	<build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

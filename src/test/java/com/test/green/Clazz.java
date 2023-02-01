@@ -1,4 +1,4 @@
-package com.homework.shape;
+package com.test.green;
 
 public class Clazz {
     int id;

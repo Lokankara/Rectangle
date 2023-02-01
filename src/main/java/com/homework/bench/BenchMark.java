@@ -1,4 +1,4 @@
-package com.homework.shape;
+package com.homework.bench;
 
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;

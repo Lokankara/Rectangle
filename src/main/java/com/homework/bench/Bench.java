@@ -1,4 +1,4 @@
-package com.homework.shape;
+package com.homework.bench;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
@@ -31,7 +31,7 @@ public class Bench {
     @Benchmark
     public void testForFirstDesign(Blackhole bh) {
         for (int i = 0; i < 100_000; i++) {
-            Slicer.concat(a, b);
+//            Slicer.concat(a, b);
         }
 
 

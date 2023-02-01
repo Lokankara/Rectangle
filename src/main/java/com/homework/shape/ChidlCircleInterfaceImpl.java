@@ -11,4 +11,9 @@ public class ChidlCircleInterfaceImpl implements CircleInterface {
     public void setColor(String color) {
         this.color = color;
     }
+
+	public boolean isValid() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

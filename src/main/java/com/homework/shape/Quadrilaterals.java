@@ -1,6 +1,6 @@
 package com.homework.shape;
 
-public class Task {
+public class Quadrilaterals {
     private static int min = 1, max = 7;
 
     public static void main(String[] args) {

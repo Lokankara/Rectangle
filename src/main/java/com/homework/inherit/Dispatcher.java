@@ -152,8 +152,8 @@ class Car extends Auto {
  * Main java class represents three interfaces CanFly, Wheel, CanSwim
  */
 abstract class Vehicle  {
-	private String name;
-	private int price;
+	protected String name;
+	protected int price;
 	protected boolean run;
 
 	protected void run() {
@@ -340,6 +340,10 @@ class AeroPlane extends Air {
 	public AeroPlane(String name) {
 		super(name);
 	}
+
+	public AeroPlane(String name, int price) {
+		this.name = name;
+}
 
 	@Override
 	public int hashCode() {

@@ -9,7 +9,7 @@ import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class StreamApi {
+public class Predicates {
 
 	private static List<Integer> positive = new ArrayList<>();
 	private static List<Integer> negative = new ArrayList<>();

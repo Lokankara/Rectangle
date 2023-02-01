@@ -1,4 +1,4 @@
-package com.homework.shape;
+package com.homework.bench;
 
 public class KapustinDesign {
     public static double averageLength (String text) {

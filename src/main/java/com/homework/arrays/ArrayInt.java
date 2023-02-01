@@ -1,4 +1,4 @@
-package com.homework.shape;
+package com.homework.arrays;
 
 import static java.lang.System.out;
 
