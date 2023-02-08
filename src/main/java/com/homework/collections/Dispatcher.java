@@ -15,7 +15,15 @@ public class Dispatcher {
 		controller.write(outputfile, pointMap, lineMap);
 
 		controller.read(outputfile);
+		
+		controller.read(outputfile);
 
+//        var lineMapFromFile = res.getKey();
+//        var pointMapFromFile = res.getValue();
+
+//        System.out.println(lineMapFromFile);
+//        System.out.println(pointMapFromFile);
+//
 		controller.check(pointMap);
 		controller.check(lineMap);
 	}

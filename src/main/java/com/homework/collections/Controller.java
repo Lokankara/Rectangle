@@ -24,8 +24,8 @@ class Controller {
 
 	public void write(String outputfile, Object... objects) {
 
+//		var saveEntry = new AbstractMap.SimpleEntry<Map<Line, Long>, Map<Point, Long>>(linesMap, pointsMap);
 		try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(outputfile))) {
-
 			output.writeObject(objects);
 
 			System.out.printf("File %s was written%n", outputfile);
@@ -34,15 +34,15 @@ class Controller {
 		}
 	}
 
-	public void read(String outputfile) {
+	public <K,V> void read(String outputfile) {
 
 		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(outputfile))) {
 			Object[] readObject = (Object[]) input.readObject();
 
 			for (var object : readObject) {
 				if (object instanceof HashMap) {
-					HashMap map = ((HashMap) object);
-					for (var key : map.keySet()) {
+					HashMap<K,V> map = ((HashMap<K,V>) object);
+					for (K key : map.keySet()) {
 						if (key instanceof Line) {
 							dao.addToLines((Line) key, (Long) map.get(key));
 						}
@@ -59,9 +59,9 @@ class Controller {
 //		return shapes;
 	}
 
-	public void check(HashMap map) {
+	public <K,V> void check(HashMap<K,V> map) {
 
-		for (var key : map.keySet()) {
+		for (K key : map.keySet()) {
 			if (key instanceof Line) {
 				assertEquals(dao.getLineMap().get(key), map.get(key));
 				System.out.printf("%s intersections %s object(s)%n", key, map.get(key));

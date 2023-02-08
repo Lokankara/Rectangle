@@ -11,7 +11,7 @@ public class MyPancake implements Pancake {
 		List<String> y = new MyPancake().doStuff(x);
 		y.add("1");
 		System.out.println(x);
-		System.out.println("Cannot reduce the visibility of the inherited method from Pancake"
+		System.out.println("Cannot reduce the visibility public in #18 of the inherited method from Pancake"
 				+ "	implements com.test.sierra.exam.Pancake.doStuff\r\n");
 	}
 

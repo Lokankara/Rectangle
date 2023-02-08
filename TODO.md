@@ -1,27 +1,24 @@
-- Створити багатопотокову систему для визначення кількості 
-розділових знаків в трьох текстових файлах по кожному файлу окремо.
+1. Using the synchronized keyword, create a synchronous multi-threaded system to determine the total sum of all available integers and fractional
+numbers in three text files. DO NOT sum all numbers from each file
+separately, then adding three sums, the result must be formed sequentially - according to measure
+reading numbers from files. DO NOT use intermediate collection creation
+for read text and not convert the entire file to text.
+2. Create a similar system using package resources
+java.util.concurrent.atomic.
 
- - Для кожного файлу за власним вибором обрати свій спосіб створення потоку 
- (за допомогою інтерфейсів Runnable, Callable, Executor, ExecutorService). 
- 
- - НЕ ВИКОРИСТОВУВАТИ для прочитаного тексту створення проміжних колекцій або цілий String. 
- 
- - Порівняти часові витрати при вирішенні завдання одно- та багатопотоковим способами. 
 
- - СТРОГО ПІСЛЯ завершення читання даних з файлів для збереження результатів створити TreeSet, 
- посортований по кількості розділових знаків у файлах від більшого значення до меншого, 
- (використати обгортку або підклас класу File)
+78,33378,748, 5,0 12.0 
 
 + [Heller] – ch.1, # 6, 7, p.491, # 47,
-+ [Heller] – ch.1, # 15, ch.3, # 5,
-+ [Heller], ch.1, #4,11,12, p.476, #2,	
-+ [Heller], ch.6, #3, 4, # 6, 7, p.487, #37, p.488, #38, 
-+ [Heller], ch.8, #4,
-+ [Heller], ch.3, #6,
++ [Heller] – ch.1, # 15, ch.3, # 5,0
++ [Heller], ch.1, #4,11,12, p.476, #2,0
++ [Heller], ch.6, #3, 4, # 6, 7, p.487, #37, p.488, # 38,0
++ [Heller], ch.8,# 4.0
++ [Heller], ch.3,# 6.0
 + [Heller], ch.3, #7, 9, 10, 11, 16, 20
 + [Heller], ch.3, #17,
 + ch.4, #5, 
-+ ch.6, #11, p.487, #36.
++ ch.6, #11, p.487, # 36.0
 + [Heller], p.490, #45, 
 + [Heller], p.478, #7, 
 + [Heller], AsT, # 15(A), AsT, #7(B/C/D), 9(B), 10(C),
@@ -33,7 +30,7 @@
 + [Raposa], ch.1, #8, 
 + [Raposa]  ch.1, # 9,
 + [Raposa], ch.1, #10,
-+ [Raposa], ch.2, #7,
++ [Raposa], ch.2,# 7.0
 + [Raposa], ch.2, #4, 6,
 + [Raposa], ch.2, #20, 25,
 + [Raposa], ch.2, #15, 23, 
@@ -45,7 +42,7 @@
 [Jaworsky], p.71, #1, 
 [Jaworsky], p.72, #23, 
 [Yaworsky], p.73, # 31, 51,
-[Jaworsky], p.111, #1,
+[Jaworsky], p.111,# 1.0
 
 
 + [Sanghera], ch.3, #3, 6, 8, 
@@ -53,7 +50,7 @@
 [Sanghera] - ch.4, # 11,
 [Sanghera], ch.4, #5, 6, ch.5, #15, p.342, #25, 
 [Sanghera], ch.5, #12, 13, 14,
-[Sanghera], ch.5, #6,
+[Sanghera], ch.5,# 6.0
 p.336, #9, 10, p.341, #23, p.342, #24, 
 [Sanghera], p.341, #22, 
 [Sanghera], p.337, #13, p.338, #15, 
@@ -79,7 +76,7 @@ p.336, #9, 10, p.341, #23, p.342, #24,
               PE2, #17, 35, 54, PE3, #15, 16, 55, PE4, #8, 51,
 [SierraExam], PE2, # 43, PE3, #11,
 [SierraExam], PE2, #18, PE4, #16,
-[SierraExam], PE2, #2,
+[SierraExam], PE2,# 2.0
 [SierraExam], AsT1, #1, AsT2, #7, 
 [SierraExam], PE1, #47, PE2, #31, 47, PE3, #23, PE4, 
 [SierraExam], PE3, #57, 
@@ -87,7 +84,7 @@ p.336, #9, 10, p.341, #23, p.342, #24,
 [SierraExam], PE2, #4, 
 [SierraExam], PE3, #57, 
 [SierraExam], PE2, #20, PE4, #25,
-[SierraExam], PE2, #4,
+[SierraExam], PE2,# 4.0
 [SierraExam], PEx2, # 12, PEx 2, # 15, PEx3, # 12, 22, PEx4, # 14, 27, # 1, 23,
 [SierraExam] – AssTest1, #7,  AssTest2, #10,
 [SierraExam] – AsTest1, # 2, AsTest2, # 9,
@@ -117,7 +114,7 @@ PEx1, # 9, 13, 19, 27, 36, 37, PEx2, # 13, 29.
 [Sierra5] – ch1, # 1, 3, ch2, # 3,
 [Sierra6] – ch1, # 6, ch.4, #10,
  
-[Sierra5], ch.2, #13, 14, ch.3, #7,
+[Sierra5], ch.2, #13, 14, ch.3,# 7.0
 [Sierra6], ch.2, #8, 9,
 
 [Sierra7] - ch.3, # 6, 12,
@@ -143,7 +140,7 @@ PEx1, # 9, 13, 19, 27, 36, 37, PEx2, # 13, 29.
 [Ganesh] – MockExam2, # 3,
 [Ganesh] – ch.3, # 3,ch.5, # 4, 5. 
 
-[Green], # 28, AssesmentTest, #7,
+[Green], # 28, AssesmentTest,# 7.0
  [Green], #25,AssesmentTest, # 5,
 
 [Reese] – ch.6, # 6, #19, 60, 
@@ -153,25 +150,25 @@ PEx1, # 9, 13, 19, 27, 36, 37, PEx2, # 13, 29.
 ### to string 
 
 [Sanghera], ch.4, #5, 6, ch.5, #15, p.342, #25, 
-[Jaworsky], p.71, #1,
+[Jaworsky], p.71,# 1.0
 [Raposa], ch.2, #15, 23, ch.6, #7, 
  [Heller], ch.3, #7, 9, 10, 11, 16, ch.4, #5, ch.6, #11, p.487, #36
 
 [Sanghera], p.337, #13, p.338, #15,
 [Heller], p.490, #45,
-[Raposa], AsT, #33, ch.6, #6,
+[Raposa], AsT, #33, ch.6,# 6.0
 [Ganesh], MockExam1, # 9,
 [Mala Gupta] – MockExam, # 6, 71
 
 [Sanghera], p.341, #22,
-[Heller], p.478, #7,
+[Heller], p.478,# 7.0
 [Sierra5], ch.2, #8, 10.
 
 [Raposa], ch.6, #15, 16,
 [Heller], p.486-487, #34, 35, 
 [Heller], ch.2, # 17, ch.4, # 1, 6, 20,
 [Jaworsky], p.56, #6.
-[Raposa], ch.3, #5,
+[Raposa], ch.3,# 5.0
 [Sanghera], p.338, #14, p.339, #18, 
 [Raposa], ch.6, #12,
 [Green], #6.
@@ -220,3 +217,4 @@ PEx1, # 9, 13, 19, 27, 36, 37, PEx2, # 13, 29.
 Шилдt 465, 715 (1377)
 Sierra6 580 
 Sierra6 757 
+78,,0 12.0 656 76 7-9

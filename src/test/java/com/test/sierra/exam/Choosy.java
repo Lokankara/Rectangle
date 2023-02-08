@@ -2,7 +2,7 @@ package com.test.sierra.exam;
 
 public class Choosy {
 	public static void main(String[] args) {
-		String result = "";
+		String result = "#1.5: ";
 		int x = 7, y = 8;
 		if (x == 3) {
 			result += "1";
