@@ -5,12 +5,12 @@ import java.util.Queue;
 
 class Runner implements Runnable {
 
-	private Accumulator tr;
+    Transformer transform;
 	private Queue<String> dataQueue;
-	private Map<String, Long> counters;
+	private Map<String, Integer> counters;
 
-	public Runner(Accumulator tr, Map<String, Long> counters, Queue<String> dataQueue) {
-		this.tr = tr;
+	public Runner(Transformer transform, Map<String, Integer> counters, Queue<String> dataQueue) {
+		this.transform = transform;
 		this.dataQueue = dataQueue;
 		this.counters = counters;
 	}
@@ -20,11 +20,11 @@ class Runner implements Runnable {
 		while (!dataQueue.isEmpty()) {
 			String line = dataQueue.poll();
 			if (line != null) {
-				String[] words = tr.mapToTokens(line);
-				String[] legalWords = tr.filterIllegalTokens(words);
-				String[] lowerCaseWords = tr.mapToLowerCase(legalWords);
+				String[] words = transform.mapToTokens(line);
+				String[] legalWords = transform.filterIllegalTokens(words);
+				String[] lowerCaseWords = transform.mapToLowerCase(legalWords);
 				for (String word : lowerCaseWords) {
-					tr.reduce(counters, word);
+					transform.reduce(counters, word);
 				}
 			}
 		}

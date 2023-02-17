@@ -10,6 +10,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+import com.homework.threads.io.lock.Accumulator;
+
 public class ThreadManager {
 	private static ThreadManager instance;
 	private static final int MAX_READERS_SIZE = 3;
@@ -24,7 +26,7 @@ public class ThreadManager {
 
 	private ThreadManager() {
 		for (int i = 0; i < MAX_READERS_SIZE; i++) {
-			aviableReaders.add(new Accumulator());
+			aviableReaders.add(new Accumulator("f1"));
 		}
 	}
 

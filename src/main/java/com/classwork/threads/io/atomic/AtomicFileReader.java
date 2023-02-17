@@ -1,20 +1,17 @@
 package com.classwork.threads.io.atomic;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Scanner;
 import java.util.concurrent.atomic.DoubleAdder;
-import java.util.concurrent.locks.Lock;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 public class AtomicFileReader {
 
-class AtomicFileReader {
-
-	private final AtomicFileWrapper;
 	private final File file;
+	private final DoubleAdder doubleAdder;
 
-	public AtomicFileWrapper(File file) {
+	public AtomicFileReader(File file) {
 		super();
 		this.file = file;
 		this.doubleAdder = new DoubleAdder();
@@ -26,8 +23,6 @@ class AtomicFileReader {
 			while (scanner.hasNext()) {
 				matcher = Pattern.compile("\\d[0-9]{1,13}([,\\.][0-9]{1,5})?").matcher(scanner.next());
 				if (matcher.find()) {
-//					boolean?//
-//					lock.lock();
 					doubleAdder.add(Double.parseDouble(matcher.group().replace(",", ".")));
 				}
 			}
@@ -41,10 +36,5 @@ class AtomicFileReader {
 	@Override
 	public String toString() {
 		return String.format("File %s, total sum: %s", file, doubleAdder);
-	}
-
-	public void readFile() {
-		// TODO Auto-generated method stub
-		
 	}
 }

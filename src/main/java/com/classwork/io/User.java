@@ -27,8 +27,6 @@ public class User implements Serializable {
 		super();
 	}
 
-	// Setters and Getters
-
 	private void readObject(ObjectInputStream aInputStream) throws ClassNotFoundException, IOException {
 		firstName = aInputStream.readUTF();
 		lastName = aInputStream.readUTF();

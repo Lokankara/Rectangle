@@ -1,4 +1,4 @@
-package com.homework.threads.io.collections;
+package com.classwork.threads.io.collections.hws;
 
 import java.util.ArrayList;
 import java.util.Arrays;

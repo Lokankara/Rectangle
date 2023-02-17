@@ -3,17 +3,22 @@ package com.classwork.threads.io.collections;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-class Accumulator {
+class Transformer {
 	public String[] mapToTokens(String input) {
 		return input.split("[ _\\.,\\-\\+]");
 	}
 
 	String[] filterIllegalTokens(String[] words) {
 		List<String> filteredList = new ArrayList<>();
+		Pattern p = Pattern.compile("\\b([a-zA-z])[a-zA-Z]*\\1\\b");
+		Matcher m;
 		for (String word : words) {
-			if (word.matches("[a-zA-Z]+")) {
-				filteredList.add(word);
+			m = p.matcher(word);
+			if (m.find()) {
+				filteredList.add(m.group());
 			}
 		}
 		return filteredList.toArray(new String[filteredList.size()]);
@@ -27,11 +32,7 @@ class Accumulator {
 		return filteredList;
 	}
 
-	public synchronized void reduce(Map<String, Long> counter, String word) {
-		if (counter.containsKey(word)) {
-			counter.put(word, counter.get(word) + 1);
-		} else {
-			counter.put(word, 1L);
-		}
+	public synchronized void reduce(Map<String, Integer> counter, String word) {
+		counter.compute(word, (key, value) -> value == null ? 1 : ++value);
 	}
 }
