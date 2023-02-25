@@ -1,4 +1,4 @@
-package com.test.reese;
+package test.java.com.test.reese;
 
 public class SomeClass {
 	public SomeClass(int i, float f) {

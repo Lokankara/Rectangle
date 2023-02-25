@@ -1,4 +1,4 @@
-package com.test.raposa;
+package test.java.com.test.raposa;
 //Assessment Test #2
 public class TV {
     private String make;

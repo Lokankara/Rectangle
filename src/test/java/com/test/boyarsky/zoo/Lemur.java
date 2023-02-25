@@ -1,4 +1,4 @@
-package com.test.boyarsky.zoo;
+package test.java.com.test.boyarsky.zoo;
 
 class Primate {
 	public boolean hasHair() {

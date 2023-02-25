@@ -1,4 +1,4 @@
-package com.test.heller.zoo.birds;
+package test.java.com.test.heller.zoo.birds;
 
 abstract public class Bird {
     protected static int referenceCount = 0;

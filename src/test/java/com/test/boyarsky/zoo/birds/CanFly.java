@@ -1,4 +1,4 @@
-package com.test.boyarsky.zoo.birds;
+package test.java.com.test.boyarsky.zoo.birds;
 
 public interface CanFly {
 

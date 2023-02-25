@@ -1,6 +1,6 @@
 HELP.md
 target/
-!.mvn/wrapper/maven-wrapper.jar
+!.mvn/gate/maven-gate.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 

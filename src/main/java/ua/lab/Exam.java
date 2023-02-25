@@ -254,8 +254,7 @@
 //    }
 //}
 
-
-package ua.lab;
+package main.java.ua.lab;
 
 import java.util.ArrayList;
 import java.util.List;

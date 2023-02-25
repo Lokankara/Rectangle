@@ -1,4 +1,4 @@
-package com.test.raposa.my.school;
+package test.java.com.test.raposa.my.school;
 
 public class ClassRoom {
 

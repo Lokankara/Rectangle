@@ -1,4 +1,4 @@
-package com.test.sierra;
+package test.java.com.test.sierra;
 
 public class Network {
 	Network(int x, Network n) {

@@ -1,4 +1,4 @@
-//package com.ua.lab.exam;
+//package  com.ua.lab;
 //
 //import org.openjdk.jmh.annotations.*;
 //import org.openjdk.jmh.infra.Blackhole;

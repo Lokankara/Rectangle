@@ -1,4 +1,4 @@
-package com.test.mughal;
+package test.java.com.test.mughal;
 
 public class Advice {
     private static final int LITTLE_ADVICE = 0;

@@ -1,4 +1,4 @@
-package com.test.raposa;
+package test.java.com.test.raposa;
 
 public class TestDrive{
 	public static void go(Car car){

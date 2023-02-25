@@ -1,4 +1,4 @@
-package com.ua.lab.exam;
+package main.java. main.java.com.ua.lab;
 
 public class KapustinDesign {
     public static double averageLength (String text) {

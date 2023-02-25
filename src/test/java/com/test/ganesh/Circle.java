@@ -1,4 +1,4 @@
-package com.test.ganesh;
+package test.java.com.test.ganesh;
 
 class Circle extends Shape {
 	private int xPos, yPos, radius;

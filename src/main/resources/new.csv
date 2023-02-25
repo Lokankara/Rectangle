@@ -1,4 +1,4 @@
-N,Bottle,Volume,Material
-2 Juice 1.5 Paper
-3 Bear 0.33 Metal
-4 Water 0.95 Plastic
+N Bottle Volume Material Material
+5 Juice 1.5 Paper
+6 Bear 0.33 Metal
+8 Water 0.95 Plastic

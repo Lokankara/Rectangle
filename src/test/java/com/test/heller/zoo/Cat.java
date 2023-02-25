@@ -1,4 +1,4 @@
-package com.test.heller.zoo;
+package test.java.com.test.heller.zoo;
 
 class Pet{
 	boolean neutered;

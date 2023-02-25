@@ -1,5 +1,5 @@
-package com.test.raposa.my.city;
-import com.test.raposa.my.school.ClassRoom;
+package test.java.com.test.raposa.my.city;
+import test.java.com.test.raposa.my.school.ClassRoom;
 
 public class School {
 

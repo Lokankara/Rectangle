@@ -1,4 +1,4 @@
-package com.test.sierra;
+package test.java.com.test.sierra;
 
 class Fizz {
 	int x = 5;

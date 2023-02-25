@@ -1,4 +1,4 @@
-package com.test.green;
+package test.java.com.test.green;
 
 abstract class Base{
     abstract public void function();

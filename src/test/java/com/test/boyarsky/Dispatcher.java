@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.test.boyarsky;
+package test.java.com.com.test.boyarsky;
 
 import java.util.Arrays;
 

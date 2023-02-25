@@ -1,4 +1,4 @@
-package com.test.heller;
+package test.java.com.test.heller;
 
 // B, D, F. A static import does not apply to non-static features, so A, C, and E are ruled out. Since 
 //the class performing the import is in the same package as Sploo, all static features (data and 

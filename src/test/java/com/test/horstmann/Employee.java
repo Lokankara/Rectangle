@@ -1,4 +1,4 @@
-package com.test.horstmann;
+package test.java.com.test.horstmann;
 
 public class Employee {
 	private static int nextId = 1;

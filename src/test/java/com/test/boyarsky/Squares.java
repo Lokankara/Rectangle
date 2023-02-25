@@ -1,4 +1,4 @@
-package com.test.boyarsky;
+package test.java.com.test.boyarsky;
 public class Squares{
 	public static long square(int x) {
 		long y = x*(long) x;

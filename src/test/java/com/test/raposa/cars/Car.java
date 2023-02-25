@@ -1,6 +1,6 @@
-package com.test.raposa.cars;
+package test.java.com.test.raposa.cars;
 
-import com.test.raposa.Vehicle;
+import test.java.com.test.raposa.Vehicle;
 
 public class Car extends Vehicle {
 	public Car() {
