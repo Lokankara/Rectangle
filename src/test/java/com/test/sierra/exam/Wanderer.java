@@ -10,7 +10,7 @@ class Wander implements Runnable {
 class Wanderer {
 	public static void main(String[] args) {
 		Wander w = new Wander();
-		Thread t1 = new Thread(w);
+		Thread t1 = new Thread();
 		Thread t2 = new Thread(w);
 		Thread t3 = new Thread(w, "fred");
 		t1.start();

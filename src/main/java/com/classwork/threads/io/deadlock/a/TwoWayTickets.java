@@ -7,10 +7,23 @@ public class TwoWayTickets {
 
 	public static void main(String[] args) throws InterruptedException {
 		Ticket[] tickets = new Ticket[10];
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < tickets.length; i++) {
 			tickets[i] = new Ticket(i + 1);
 		}
-		Cashier[] cashiers = { new Cashier(200, tickets), new Cashier(300, tickets)};
+		Cashier[] cashiers = { 
+				new Cashier(100, tickets), 
+				new Cashier(300, tickets), 
+				new Cashier(500, tickets), 
+				new Cashier(700, tickets), 
+				new Cashier(800, tickets), 
+				new Cashier(900, tickets), 
+				new Cashier(102100, tickets),
+				new Cashier(600, tickets), 
+				new Cashier(700, tickets), 
+				new Cashier(800, tickets), 
+				new Cashier(900, tickets), 
+				new Cashier(102100, tickets), 
+				new Cashier(200, tickets), new Cashier(300, tickets)};
 
 		for (Cashier cashier : cashiers) {
 			cashier.start();

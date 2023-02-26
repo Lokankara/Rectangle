@@ -6,11 +6,11 @@ public class Drip extends Thread {
 		t.start();
 		t.join();
 		for (int i = 0; i < 10; i++) // Loop #1
-			System.out.print(Thread.currentThread().getName() + " ");
+			System.out.println(Thread.currentThread().getName() + "#1 ");
 	}
 
 	public void run() {
 		for (int i = 0; i < 10; i++) // Loop #2
-			System.out.print(Thread.currentThread().getName() + " ");
+			System.out.println(Thread.currentThread().getName() + "#2 ");
 	}
 }

@@ -11,7 +11,7 @@ import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class LockDispatcher {
+public class TransformDispatcher {
     public static void main(String[] args) {
         Controller.runDoubleThread();
         Controller.runMultiThread();
@@ -21,8 +21,8 @@ public class LockDispatcher {
 class Controller {
     private Controller() {}
     static Manager manager = new Manager();
-    static List<Runner> threadPool = new ArrayList<>();
-    static List<String> filenames = new ArrayList<>(Arrays.asList("f1", "f2", "f3"));
+    static List<Runs> threadPool = new ArrayList<>();
+    static List<String> filenames = new ArrayList<>(Arrays.asList("READ.md", "TODO.md", "HELP.md"));
 
     public static void runDoubleThread() {
     	long start = System.nanoTime();
@@ -46,17 +46,17 @@ class Controller {
     }
 }
 
-abstract class Runner implements Runnable {
+abstract class Runs implements Runnable {
     Thread thread;
     Manager manager;
 
-    Runner(String name, Manager manager) {
+    Runs(String name, Manager manager) {
         this.manager = manager;
         this.thread = new Thread(this, name);
     }
 }
 
-class Counters extends Runner {
+class Counters extends Runs {
     public Counters(Manager manager) {
         super("Counter", manager);
     }
@@ -64,12 +64,12 @@ class Counters extends Runner {
     @Override
     public void run() {
         for (String filename : Controller.filenames) {
-            manager.count(new Resource(filename));
+            manager.count(new FileWrapper(filename));
         }
     }
 }
 
-class Transformers extends Runner {
+class Transformers extends Runs {
     public Transformers(Manager manager) {
         super("Transformer", manager);
     }
@@ -82,7 +82,7 @@ class Transformers extends Runner {
     }
 }
 
-class Transformer extends Runner {
+class Transformer extends Runs {
     public Transformer(String filename, Manager manager) {
         super(filename, manager);
     }
@@ -93,7 +93,7 @@ class Transformer extends Runner {
     }
 }
 
-class Counter extends Runner {
+class Counter extends Runs {
 
     public Counter(String filename, Manager manager) {
         super(filename, manager);
@@ -101,15 +101,15 @@ class Counter extends Runner {
 
     @Override
     public void run() {
-        manager.count(new Resource(thread.getName()));
+        manager.count(new FileWrapper(thread.getName()));
     }
 }
 
-class Resource {
+class FileWrapper {
 	private final File file;
     private final AtomicLong counter;
 
-    public Resource(String filename) {
+    public FileWrapper(String filename) {
         this.file = new File(filename);
         this.counter = new AtomicLong();
     }
@@ -189,7 +189,7 @@ class Resource {
 }
 
 class Manager {
-    private Resource resource;
+    private FileWrapper resource;
     private final AtomicBoolean lock = new AtomicBoolean(false);
 
     synchronized void transform() {
@@ -212,7 +212,7 @@ class Manager {
                 Thread.currentThread().getId());
     }
 
-    synchronized void count(Resource resource) {
+    synchronized void count(FileWrapper resource) {
         while (lock.get()) {
             try {
                 wait();

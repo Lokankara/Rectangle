@@ -1,16 +1,12 @@
-package com.classwork.threads.io.atomic;
+package com.classwork.threads.accumulator;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-import com.homework.threads.io.lock.Accumulator;
 
 public class ThreadManager {
 	private static ThreadManager instance;

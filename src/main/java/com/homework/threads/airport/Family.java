@@ -4,67 +4,57 @@ import java.util.Comparator;
 import java.util.Objects;
 
 class Family implements Comparator<Family> {
-	private Integer count;
-	private String name;
-	private Integer planeId;
-	private String travelTo;
-	private Integer busId;
+    private final int count;
+    private final int planeId;
+    private final String name;
+    private final String travelTo;
 
-	public Family(Integer count, String name, Integer planeId, String travelTo) {
-		super();
-		this.name = name;
-		this.count = count;
-		this.planeId = planeId;
-		this.travelTo = travelTo;
-	}
+    public Family(int count, String name, int plane, String travelTo) {
+        this.planeId = plane;
+        this.count = count;
+        this.name = name;
+        this.travelTo = travelTo;
+    }
 
-	public Integer getPlaneId() {
-		return planeId;
-	}
+    public int getCount() {
+        return count;
+    }
 
-	public Integer getCount() {
-		return count;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getTravelTo() {
-		return travelTo;
-	}
-	
-	public Integer getBusId() {
-		return busId;
-	}
+    public String getTravelTo() {
+        return travelTo;
+    }
 
-	public void setBusId(Integer busId) {
-		this.busId = busId;
-	}
+    @Override
+    public String toString() {
+        return "%s %s family %s".formatted(count, name, travelTo);
+    }
 
-	@Override
-	public String toString() {
-		return String.format("%s member(s) from the %s family are traveling to %s by plane#%s", count, name,
-				travelTo, planeId);
-	}
+    @Override
+    public int compare(Family a, Family b) {
+        return Integer.compare(b.getCount(), a.getCount());
+    }
 
-	@Override
-	public int compare(Family a, Family b) {
-		return Integer.compare(b.getCount(), a.getCount());
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Family family = (Family) o;
+        return count == family.count && planeId == family.planeId && Objects.equals(name, family.name) && Objects.equals(travelTo, family.travelTo);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(busId, count, name, planeId, travelTo);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(count, planeId, name, travelTo);
+    }
+}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Family other = (Family) obj;
-		return Objects.equals(busId, other.busId) && Objects.equals(count, other.count)
-				&& Objects.equals(name, other.name) && Objects.equals(planeId, other.planeId)
-				&& Objects.equals(travelTo, other.travelTo);
-	}
+class FamilyComparator implements Comparator<Family> {
+    @Override
+    public int compare(Family a, Family b) {
+        return Integer.compare(b.getCount(), a.getCount());
+    }
 }

@@ -6,11 +6,21 @@ import java.util.concurrent.locks.ReentrantLock;
 public class OneWayTicketDispatcher {
 
 	public static void main(String[] args) throws InterruptedException {
-		Ticket[] tickets = new Ticket[100];
-		for (int i = 0; i < 100; i++) {
+		Ticket[] tickets = new Ticket[1000];
+		for (int i = 0; i < tickets.length; i++) {
 			tickets[i] = new Ticket(i + 1);
 		}
-		Cashier[] cashiers = { new Cashier(200, tickets), new Cashier(300, tickets)};
+		Cashier[] cashiers = { 
+				new Cashier(200, tickets), 
+				new Cashier(100, tickets), 
+				new Cashier(300, tickets), 
+				new Cashier(500, tickets), 
+				new Cashier(600, tickets), 
+				new Cashier(700, tickets), 
+				new Cashier(800, tickets), 
+				new Cashier(900, tickets), 
+				new Cashier(102100, tickets), 
+				new Cashier(104430, tickets)};
 
 		for (Cashier cashier : cashiers) {
 			cashier.start();
@@ -62,11 +72,17 @@ class Cashier extends Thread {
 
 	public void run() {
 		for (Ticket ticket : tickets) {
+
+			ticket.lock.lock();
 			try {
-				while (!ticket.lock.tryLock()) {
+//				while (!ticket.lock.tryLock()) {
 					num++;
-				}
+				
 				ticket.buy(id);
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			} finally {
 				ticket.lock.unlock();
 			}

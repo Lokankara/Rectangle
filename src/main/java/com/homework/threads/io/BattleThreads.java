@@ -15,7 +15,7 @@ public class BattleThreads {
 		long durationMultiThread = Controller.readMultiThreads(filenames);
 		long durationRunnerMultiThread = Controller.runMultiThreads(filenames);
 
-//		Controller.oneTreeSet.forEach(System.out::println);
+		Controller.oneTreeSet.forEach(System.out::println);
 		Controller.runTreeSet.forEach(System.out::println);
 		Controller.multiTreeSet.forEach(System.out::println);
 
