@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 import static java.lang.System.out;
 
-public class StringApi {
+public class StreamApi {
 
     static String str = ""
             + "1)Зробити великими перші букви у кожному слові тексту. "
@@ -125,7 +125,7 @@ public class StringApi {
 
     private static void task7(String[] sentences) {
         out.println("task#7 In each sentence of the text, swap the first word with the last");
-        Arrays.stream(sentences).forEach(StringApi::change);
+        Arrays.stream(sentences).forEach(StreamApi::change);
     }
 
     private static void change(String sentence) {
