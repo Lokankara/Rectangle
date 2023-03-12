@@ -1,8 +1,7 @@
 package com.homework.stream;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.IntSummaryStatistics;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
@@ -17,69 +16,47 @@ public class CollectorsDispatcher {
 
 	public static void main(String[] args) {
 
-		List<Integer> numbers = getNumbers(-10, 10, 10);
-		IntSummaryStatistics statistics = numbers.stream().mapToInt(Integer::intValue).summaryStatistics();
-		int min = statistics.getMin();
-		int max = statistics.getMax();
+		List<Integer> numbers = getNumbers(0, 9, 10);
 
-		List<Integer> swapped = numbers.stream().map(number -> number == min ? max : number == max ? min : number)
-				.toList();
-		
-		System.out.println(numbers);
-		System.out.println(swapped);
+		// Task#1 - swap minimum and maximum
+		List<Integer> swapped = swap(numbers);
 
-		Map<Integer, List<Integer>> mapIndex = new HashMap<>();
+		System.out.printf("Source:  %s%n", numbers);
+		System.out.printf("Swapped: %s%n", swapped);
 
-		for (int i = 0; i < numbers.size(); i++) {
-			if (!mapIndex.keySet().contains(numbers.get(i))) {
-				List<Integer> list = new ArrayList<>();
-				list.add(i);
-				mapIndex.put(numbers.get(i), list);
-			} else {
-				List<Integer> list = mapIndex.get(numbers.get(i));
-				list.add(i);
-			}
-		}
+		// Task#2 - find number elements that are greater than the arithmetic mean;
+		List<Integer> greaterThanAverage = findGreater(numbers);
+		System.out.printf("Elements that are greater than the arithmetic mean: %s%n", greaterThanAverage);
 
-		Map<Integer, List<Integer>> indexMap = IntStream.range(0, numbers.size()).boxed()
-				.collect(Collectors.groupingBy(numbers::get));
+		Map<Integer, Long> differenceSounds = defineDifference(sentences);
+		System.out.printf("Difference between quantity consonants and vowels:%n%s%n", differenceSounds);
+	}
 
-		System.err.println(mapIndex);
-		System.out.println(indexMap);
-
-		int[] array = IntStream.range(0, numbers.size()).filter(i -> numbers.get(i) == statistics.getMin()).toArray();
-
-		Map<Boolean, Integer> index = new HashMap<>();
-		for (int i = 0; i < numbers.size(); i++) {
-			Integer integer = numbers.get(i);
-			if (integer == statistics.getMax()) {
-				index.put(true, i);
-			}
-		}
-
-//		Collector<String, ?, Map<Boolean, Long>> collector = Collectors.partitioningBy(s -> s.length() > 4,
-//				Collectors.counting());
-
-		List<Integer> greaterThanAverage = numbers.stream()
-				.filter(a -> a > numbers.stream().mapToInt(i -> i).average().orElse(0.0)).toList();
-		System.out.println(greaterThanAverage);
-
+	private static Map<Integer, Long> defineDifference(String sentences) {
 		Matcher matcher = Pattern.compile("[^.!?]+[.!?]").matcher(sentences);
-		Map<Integer, Long> differenceSounds = IntStream.range(1, sentences.length() + 1).filter(i -> matcher.find())
-				.boxed().collect(Collectors.toMap(number -> number, number -> calculate(matcher.group())));
-
-		System.out.println(differenceSounds);
+		return IntStream.range(1, sentences.length() + 1).filter(i -> matcher.find()).boxed()
+				.collect(Collectors.toMap(number -> number,
+						number -> count(matcher.group(), "zxcvbnmsdfghjklqwrtyp") - count(matcher.group(), "aeiou")));
 	}
 
-	private static long calculate(String sentence) {
-		return count(sentence, "zxcvbnmsdfghjklqwrtyp") - count(sentence, "aeiou");
+	private static LinkedList<Integer> swap(List<Integer> numbers) {
+		IntSummaryStatistics stats = numbers.stream().mapToInt(Integer::intValue).summaryStatistics();
+
+		return numbers.stream().collect(LinkedList::new,
+				(list, number) -> list.add(
+						number == stats.getMin() ? stats.getMax() : number == stats.getMax() ? stats.getMin() : number),
+				LinkedList::addAll);
 	}
 
-	private static long count(String sentence, String letters) {
-		return sentence.toLowerCase().chars().filter(letter -> letters.indexOf(letter) > -1).count();
+	private static List<Integer> findGreater(List<Integer> numbers) {
+		return numbers.stream().filter(n -> n > numbers.stream().mapToInt(i -> i).average().orElse(0.0)).toList();
 	}
 
-	private static List<Integer> getNumbers(int min, int max, int range) {
+	private static long count(String sentence, String pattern) {
+		return sentence.toLowerCase().chars().filter(letter -> pattern.indexOf(letter) > -1).count();
+	}
+
+	public static List<Integer> getNumbers(int min, int max, int range) {
 		return IntStream.range(0, range).mapToObj(i -> ThreadLocalRandom.current().nextInt(min, max + 1)).toList();
 	}
 }

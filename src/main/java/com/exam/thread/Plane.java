@@ -3,22 +3,34 @@ package com.exam.thread;
 import java.util.ArrayList;
 import java.util.List;
 
-class Plane extends Transport {
+class Plane implements Runnable {
     private final int id;
-   
-    public Plane(int id, List<Family> families) {
-        super(new ArrayList<>(families));
-        this.id = id;
-     }
+    private final List<Family> families;
 
-    public int getId() {
+    public Plane(int id, List<Family> families) {
+		super();
+		this.id = id;
+		this.families = families;
+	}
+
+	public int getId() {
         return id;
     }
 
     @Override
     public String toString() {
-        return "\u001B[36m%s-seat aircraft#%s who arrive at the gate\u001B[m".formatted(getMembers(), id);
+        return "\u001B[36m -seat aircraft#%s who arrive at the gate\u001B[m".formatted(id);
     }
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public List<Family> getFamilies() {
+		return families;
+	}
 }
 
 class Bus extends Transport {
@@ -42,7 +54,6 @@ class Bus extends Transport {
 
 	@Override
 	public void run() {
-station.de		
 	}
 }
 

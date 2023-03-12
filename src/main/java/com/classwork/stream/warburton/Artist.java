@@ -1,4 +1,4 @@
-package com.classwork.stream;
+package com.classwork.stream.warburton;
 
 import static java.util.Collections.unmodifiableList;
 import static java.util.stream.Collectors.toList;

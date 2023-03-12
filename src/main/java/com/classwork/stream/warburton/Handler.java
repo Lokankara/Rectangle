@@ -1,5 +1,6 @@
-package com.classwork.stream;
+package com.classwork.stream.warburton;
 
+import static com.classwork.stream.warburton.Dao.*;
 import static java.util.stream.Collectors.toSet;
 import static org.junit.Assert.assertEquals;
 
@@ -12,17 +13,15 @@ import java.util.logging.Logger;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static com.classwork.stream.Dao.*;
-
-public class Warburton {
+public class Handler {
 
 	public static void main(String[] args) {
 
 		long count = membersOfMetallica.stream().filter(artist -> artist.isFrom("UK")).count();
 
-		List<String> namesAndOrigins = Exercise.getNamesAndOrigins(membersOfTheBeatles);
+		List<String> namesAndOrigins = Controller.getNamesAndOrigins(membersOfTheBeatles);
 
-		Optional<String> largestString = Exercise.getLargestString(namesAndOrigins);
+		Optional<String> largestString = Controller.getLargestString(namesAndOrigins);
 		System.err.println(largestString.get());
 
 //		assertEquals("c", largestString.orElseGet(() -> "c"));
@@ -77,9 +76,12 @@ public class Warburton {
 			}
 		}
 
-		Set<String> longTracks = Exercise.findLongStreamTracks(albums);
-
-		System.err.println(Exercise.countLowerCase("QerHwqFw"));
+		Set<String> longTracks = Controller.findLongStreamTracks(albums);
+		int sum = Controller.parallelArraySum(albums);
+		
+		System.out.println("sum: "+ sum);
+		
+		System.err.println(Controller.countLowerCase("QerHwqFw"));
 
 		Set<String> origins = aLoveSupreme.getMusicians().filter(artist -> artist.getName().startsWith("The"))
 				.map(artist -> artist.getNationality()).collect(toSet());

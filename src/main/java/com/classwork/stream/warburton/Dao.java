@@ -1,4 +1,4 @@
-package com.classwork.stream;
+package com.classwork.stream.warburton;
 
 import java.util.Arrays;
 import java.util.List;

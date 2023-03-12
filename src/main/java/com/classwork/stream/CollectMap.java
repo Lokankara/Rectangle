@@ -3,6 +3,8 @@ package com.classwork.stream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +13,11 @@ import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import com.homework.stream.CollectorsDispatcher;
+
 import java.util.stream.Collector;
 
 public class CollectMap {
@@ -56,5 +62,38 @@ public class CollectMap {
 				Collection::size, Collectors.flatMapping(l -> l.stream().filter(i -> i % 2 == 0), Collectors.toList()));
 		Map<Integer, List<Integer>> map = Stream.of(List.of(1, 2, 3, 4, 5, 6), List.of(7, 8, 9, 10))
 				.collect(listMapCollector);
+		
+
+		List<Integer> numbers = CollectorsDispatcher.getNumbers(0, 9, 10);
+		
+		Map<Integer, List<Integer>> indexMap = IntStream.range(0, numbers.size()).boxed()
+				.collect(Collectors.groupingBy(numbers::get));
+
+		Map<Boolean, Integer> index = new HashMap<>();
+		Integer max = Collections.max(numbers);
+		for (int i = 0; i < numbers.size(); i++) {
+			Integer integer = numbers.get(i);
+			if (integer == max) {
+				index.put(true, i);
+			}
+		}
+
+		Map<Integer, List<Integer>> mapIndex = new HashMap<>();
+
+		for (int i = 0; i < numbers.size(); i++) {
+			if (!mapIndex.keySet().contains(numbers.get(i))) {
+				List<Integer> list = new ArrayList<>();
+				list.add(i);
+				mapIndex.put(numbers.get(i), list);
+			} else {
+				List<Integer> list = mapIndex.get(numbers.get(i));
+				list.add(i);
+			}
+		}
+
+		
+		System.err.println(mapIndex);
+		System.out.println(indexMap);
+
 	}
 }

@@ -1,4 +1,4 @@
-package com.classwork.stream;
+package com.classwork.stream.warburton;
 
 import static java.util.stream.Collectors.toSet;
 
@@ -16,7 +16,14 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Exercise {
+public class Controller {
+
+	public static int parallelArraySum(List<Album> albums) {
+		 return albums.parallelStream()
+		 .flatMap(Album::getTracks)
+		 .mapToInt(Track::getLength)
+		 .sum();
+		}
 
 	public static int addUp(Stream<Integer> numbers) {
 		return numbers.reduce(0, Integer::sum);
@@ -59,7 +66,7 @@ public class Exercise {
 	}
 
 	public static Optional<String> getLargestString(List<String> list) {
-		return list.stream().max(Comparator.comparingLong(Exercise::countLowerCase));
+		return list.stream().max(Comparator.comparingLong(Controller::countLowerCase));
 	}
 
 	public static void printTrackLengthStatistics(Album album) {
@@ -91,5 +98,4 @@ public class Exercise {
 			return acc;
 		}, addAll());
 	}
-	
 }

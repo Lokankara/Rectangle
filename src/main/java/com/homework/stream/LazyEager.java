@@ -69,7 +69,7 @@ public class LazyEager {
                 .toList().forEach(System.out::println);
     }
 
-    private static List<Integer> getNumbers(int min, int max, int range) {
+    public static List<Integer> getNumbers(int min, int max, int range) {
         return IntStream
                 .range(0, range)
                 .mapToObj(i -> ThreadLocalRandom.current().nextInt(min, max + 1))

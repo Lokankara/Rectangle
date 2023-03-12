@@ -8,15 +8,15 @@ public class AtomicLockDispatcher {
 	public static void main(String args[]) {
 
 		ReentrantLock lock = new ReentrantLock();
-		
+
 		new Thread(new LockRunner(lock, "А")).start();
 		new Thread(new LockRunner(lock, "B")).start();
 
 	}
 }
 
-
 class LockRunner implements Runnable {
+	AtomicInteger count = new AtomicInteger();
 	ReentrantLock lock;
 	String name;
 
@@ -32,8 +32,8 @@ class LockRunner implements Runnable {
 		try {
 			System.out.printf("Locked counter %s%n", name);
 			lock.lock();
-			AICounter.count++;
-			System.out.printf("Counter %s%n", AICounter.count);
+			count.addAndGet(1);
+			System.out.printf("Counter %s%n", count);
 			System.out.printf("Waiting 100 millis %n");
 			Thread.sleep(100);
 		} catch (InterruptedException e) {
