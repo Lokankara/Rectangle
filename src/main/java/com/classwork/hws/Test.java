@@ -1,4 +1,4 @@
-package com.classwork.hws;
+package com.ua.lab.classwork.hws;
 
 public class Test { 
  int state = 0; 

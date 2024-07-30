@@ -37,7 +37,7 @@ class BorderService {
 				.collect(Collectors.groupingBy(Family::getTravelTo, Collectors.toList()));
 
 		for (Map.Entry<String, List<Family>> cityTo : sortedToCityMap.entrySet()) {
-			new Gate(cityTo.getKey(), cityTo.getValue());
+			new GateRunnable(cityTo.getKey(), cityTo.getValue());
 		}
 	}
 }

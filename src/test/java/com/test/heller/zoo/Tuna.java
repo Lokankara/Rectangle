@@ -1,9 +1,9 @@
 /**
  * 
  */
-package com.test.heller.zoo;
+package test.java.com.test.heller.zoo;
 
-import com.test.heller.zoo.ocean.Fish;
+import test.java.com.test.heller.zoo.ocean.Fish;
 
 /**
  * @author PPoliak

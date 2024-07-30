@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.test.heller.zoo;
+package test.java.com.test.heller.zoo;
 
 /**
  * @author PPoliak

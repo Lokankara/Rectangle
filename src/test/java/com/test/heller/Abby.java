@@ -1,4 +1,4 @@
-package com.test.heller;
+package test.java.com.test.heller;
 //
 //public abstract class Abby {
 //    abstract provideMe();

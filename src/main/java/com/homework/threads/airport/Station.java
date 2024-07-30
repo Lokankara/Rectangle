@@ -1,5 +1,7 @@
 package com.homework.threads.airport;
 
+import com.homework.threads.BusRunnable;
+import com.homework.threads.PlaneRunnable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -7,13 +9,15 @@ import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.stream.Stream;
+import lombok.Getter;
 
-class Station implements Runnable {
+public class Station implements Runnable {
     private final int size;
 
     protected Thread thread;
-    private final List<Plane> planes;
-    private final static List<Bus> buses = new ArrayList<>();
+    private final List<PlaneRunnable> planes;
+    @Getter
+    private final static List<BusRunnable> buses = new ArrayList<>();
     private Queue<Family> arrivedFamilies;
     private static final List<String> cities = Stream.of(City.values()).map(City::name).toList();
     private static final int[] seats = new int[cities.size()];
@@ -33,22 +37,17 @@ class Station implements Runnable {
                     new PriorityBlockingQueue<>(cities.size(), new FamilyComparator())
             ));
 
-    public Station(List<Plane> planes, int size) {
+    public Station(List<PlaneRunnable> planes, int size) {
         this.size = size;
         this.planes = planes;
         this.thread = new Thread(this);
         arrivedFamilies = new PriorityBlockingQueue<>(cities.size(), new FamilyComparator());
     }
 
-    public static void arrive(Bus bus) {
+    public static void arrive(BusRunnable bus) {
         System.out.println(bus);
         int town = cities.indexOf(bus.getDriveTo());
         tour.get(town).addAll(bus.getFamilies());
-    }
-
-
-    public static List<Bus> getBuses() {
-        return buses;
     }
 
     @Override
@@ -60,7 +59,7 @@ class Station implements Runnable {
     public static void departure(Queue<Family> boardingPassengers) {
         int town;
         List<Family> families;
-        Bus bus;
+        BusRunnable bus;
         Family family = boardingPassengers.poll();
         while (family != null) {
             town = cities.indexOf(family.getTravelTo());
@@ -68,7 +67,7 @@ class Station implements Runnable {
             families = towns.get(town);
             families.add(family);
             if (seats[town] > 5 && seats[town] < 9) {
-                bus = new Bus(cities.get(town), families, seats[town]);
+                bus = new BusRunnable(cities.get(town), families, seats[town]);
                 families.clear();
                 seats[town] = 0;
                 buses.add(bus);
@@ -76,7 +75,7 @@ class Station implements Runnable {
             }
             family = boardingPassengers.poll();
             if (family == null && seats[town] != 0) {
-                bus = new Bus(cities.get(town), families, 6);
+                bus = new BusRunnable(cities.get(town), families, 6);
                 buses.add(bus);
                 bus.thread.start();
             }
@@ -86,7 +85,7 @@ class Station implements Runnable {
     private Queue<Family> land() {
         int i = size - 1;
         while (i >= 0) {
-            Plane remove;
+            PlaneRunnable remove;
 
             synchronized (planes) {
                 while (planes.isEmpty()) {

@@ -1,4 +1,4 @@
-package com.test.sanghera;
+package test.java.com.test.sanghera;
 
 abstract class Shape {
 	abstract void draw(); // Note that there are no curly braces here.

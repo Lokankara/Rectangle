@@ -1,4 +1,4 @@
-package com.homework.mvc;
+package com.ua.lab.homework.mvc;
 
 public class Station {
 	

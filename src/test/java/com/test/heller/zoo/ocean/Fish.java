@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.test.heller.zoo.ocean;
+package test.java.com.test.heller.zoo.ocean;
 
 /**
  * @author PPoliak

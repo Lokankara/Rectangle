@@ -1,4 +1,4 @@
-package com.classwork.hws;
+package com.ua.lab.classwork.hws;
 
 public class Wheel {
 	public static void main(String[] args) {

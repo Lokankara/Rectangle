@@ -1,4 +1,4 @@
-package com.test.reese;
+package test.java.com.test.reese;
 
 public class Chapter3 {
 	private static int i = 35;

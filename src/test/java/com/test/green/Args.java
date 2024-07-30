@@ -1,4 +1,4 @@
-package com.test.green;
+package test.java.com.test.green;
 
 public class Args {
 	static String[] MyArg;

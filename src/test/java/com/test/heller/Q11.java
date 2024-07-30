@@ -1,4 +1,4 @@
-package com.test.heller;
+package test.java.com.test.heller;
 
 public class Q11 {
 	static String s;

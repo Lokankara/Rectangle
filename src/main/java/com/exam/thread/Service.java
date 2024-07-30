@@ -62,7 +62,7 @@ public class Service {
     }
 
     private static Family getFamily(int count, int plane) {
-        return new Family(count, generateName(97, 122, 5), plane, generateCity());
+        return new Family(count, AirportController.generateName(97, 122, 5), plane, generateCity());
     }
 
     private static Integer generateMemberFamily() {
@@ -71,14 +71,5 @@ public class Service {
 
     private static String generateCity() {
         return Stream.of(City.values()).map(City::name).toList().get(ThreadLocalRandom.current().nextInt(0, 4));
-    }
-
-    private static String generateName(int min, int max, int length) {
-        StringBuilder builder = new StringBuilder();
-        builder.append((char) (ThreadLocalRandom.current().nextInt(min, max + 1) - 32));
-        for (int i = 0; i < length - 1; i++) {
-            builder.append((char) ThreadLocalRandom.current().nextInt(min, max + 1));
-        }
-        return new String(builder);
     }
 }

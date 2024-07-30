@@ -1,14 +1,15 @@
 package com.homework.threads.airport;
 
+import com.homework.threads.PlaneRunnable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Queue;
 import java.util.concurrent.PriorityBlockingQueue;
 
-class Gate {
+public class Gate {
     private static Gate gate;
-    private static final List<Plane> planes = new ArrayList<>();
+    private static final List<PlaneRunnable> planes = new ArrayList<>();
     private static final Queue<Family> arrivedPassengers = new PriorityBlockingQueue<>(5, new FamilyComparator());
 
     private Gate() {
@@ -18,7 +19,7 @@ class Gate {
         return Objects.requireNonNullElseGet(gate, () -> gate = new Gate());
     }
 
-    public void arrive(Plane plane) {
+    public void arrive(PlaneRunnable plane) {
         planes.add(plane);
         arrivedPassengers.addAll(plane.getFamilies());
         System.out.println(plane);
@@ -28,7 +29,7 @@ class Gate {
         return arrivedPassengers;
     }
 
-    public List<Plane> getArrivedPlane() {
+    public List<PlaneRunnable> getArrivedPlane() {
         return planes;
     }
 

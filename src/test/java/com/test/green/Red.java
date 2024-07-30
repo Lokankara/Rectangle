@@ -1,4 +1,4 @@
-package com.test.green;
+package test.java.com.test.green;
 
 // # 52
 public class Red{

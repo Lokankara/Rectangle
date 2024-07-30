@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-class Controller {
+public class Controller {
 	public static final List<Family> allPassagers = new ArrayList<>();
 
 	public static final List<String> cities = new ArrayList<>(Arrays.asList("Kalush", "Kosiv", "Galych", "Kolomiya"));
@@ -16,15 +16,6 @@ class Controller {
 
 	static String generateCity() {
 		return cities.get(ThreadLocalRandom.current().nextInt(0, 4));
-	}
-
-	static String generateName(int min, int max, int length) {
-		StringBuilder builder = new StringBuilder();
-		builder.append((char) (ThreadLocalRandom.current().nextInt(min, max + 1) - 32));
-		for (int i = 0; i < length - 1; i++) {
-			builder.append((char) ThreadLocalRandom.current().nextInt(min, max + 1));
-		}
-		return new String(builder);
 	}
 	
 	public static List<Plane> createPlanes() {
@@ -52,11 +43,11 @@ class Controller {
 			while (sum < amount - 3) {
 				count = Controller.generateCountFamily();
 				sum += count;
-				families.add(new Family(count, Controller.generateName(97, 122, 10 - count), plane,
+				families.add(new Family(count, AirportController.generateName(97, 122, 10 - count), plane,
 						Controller.generateCity()));
 			}
 			if (sum != amount) {
-				families.add(new Family(amount - sum, Controller.generateName(97, 122, 7), plane,
+				families.add(new Family(amount - sum, AirportController.generateName(97, 122, 7), plane,
 						Controller.generateCity()));
 			}
 //			Gate gate = new Gate(aircrafts);

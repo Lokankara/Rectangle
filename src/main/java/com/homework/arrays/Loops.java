@@ -1,4 +1,4 @@
-package com.homework.arrays;
+package com.ua.lab.homework.shape;
 
 import java.util.ArrayList;
 import java.util.List;

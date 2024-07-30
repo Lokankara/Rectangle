@@ -1,4 +1,4 @@
-package com.test.malaGupta;
+package test.java.com.test.malaGupta;
 
 public class Elf{
 	public static void main(String... args) {

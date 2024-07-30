@@ -1,4 +1,4 @@
-package com.test.raposa.books;
+package test.java.com.test.raposa.books;
 
 public class Dispatcher {
 

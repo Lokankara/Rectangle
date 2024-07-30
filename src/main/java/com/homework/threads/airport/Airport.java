@@ -1,6 +1,7 @@
 package com.homework.threads.airport;
 
-import java.util.concurrent.*;
+import com.homework.threads.PlaneRunnable;
+import java.util.concurrent.Callable;
 
 public class Airport {
     public static final int PLANES = 5;
@@ -8,25 +9,21 @@ public class Airport {
 
     public static void main(String[] args) {
 
-        Controller.producerConsumerMode();
+        AirportController.producerConsumerMode();
 //        Controller.runMultiThread();
 //        Controller.runOneSingleThread();
 //        Controller.executorMultiMode();
     }
 }
 
-class Flyer implements Callable<Plane> {
-    private final Plane plane;
+class Flyer implements Callable<PlaneRunnable> {
+    private final PlaneRunnable plane;
 
-    public Flyer(Plane plane) {
+    public Flyer(PlaneRunnable plane) {
         this.plane = plane;
     }
 
-    public Plane call() {
+    public PlaneRunnable call() {
         return this.plane;
     }
-}
-
-enum City {
-    Kalush, Kosiv, Galych, Kolomiya
 }

@@ -1,4 +1,4 @@
-package com.test.raposa.books;
+package test.java.com.test.raposa.books;
   
 //    Assessment Test #1
 abstract public class Book { 

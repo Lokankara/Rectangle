@@ -1,4 +1,4 @@
-package com.test.malaGupta;
+package test.java.com.test.malaGupta;
 class Laptop{
 	String memory= "1GB";
 }

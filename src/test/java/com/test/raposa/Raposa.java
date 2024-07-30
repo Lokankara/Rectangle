@@ -1,4 +1,4 @@
-package com.test.raposa;
+package test.java.com.test.raposa;
 
 import java.util.List;
 import java.util.Vector;

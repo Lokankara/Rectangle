@@ -1,4 +1,4 @@
-package com.test.boyarsky;
+package test.java.com.test.boyarsky;
 
 public class MathFunctions {
 	public static void addToInt(int x, int amountToAdd) {

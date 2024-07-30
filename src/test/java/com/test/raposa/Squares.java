@@ -1,4 +1,4 @@
-package com.test.raposa;
+package test.java.com.test.raposa;
 
 class Squares {
 	public static long square(int x) {

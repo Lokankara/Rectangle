@@ -1,5 +1,6 @@
 package com.classwork.threads.airport.b;
 
+import com.homework.threads.airport.Family;
 import java.util.List;
 
 public class Plane {
@@ -58,4 +59,4 @@ public class Plane {
                 ", passageLimit=" + passageLimit +
                 '}';
     }
-} 
+}

@@ -1,27 +1,19 @@
 /**
  * 
  */
-package com.test.boyarsky.zoo.aquarium.jellies;
+package test.java.com.test.boyarsky.zoo.aquarium.jellies;
 
 /**
  * @author PPoliak
  *
  */
-public class Jelly extends com.test.boyarsky.zoo.Animal {
+public class Jelly {
 
-	int length = 3;
-	protected int age;
-
+	/**
+	 * 
+	 */
 	public Jelly() {
+		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public String getName() {
-		return "Jelly";
-	}
-
-	@Override
-	public int getAge() {
-		return age;
-	}
 }

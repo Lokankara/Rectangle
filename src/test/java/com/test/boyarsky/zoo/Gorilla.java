@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.test.boyarsky.zoo;
+package test.java.com.test.boyarsky.zoo;
 
 /**
  * @author PPoliak
@@ -13,11 +13,6 @@ public class Gorilla extends Animal {
 	}
 
 	public Gorilla() {
-		super();
-	}
-
-	@Override
-	public int getAge() {
-		return 100;
+		// TODO Auto-generated constructor stub
 	}
 }

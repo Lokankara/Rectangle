@@ -1,4 +1,4 @@
-package com.test.mughal;
+package test.java.com.test.mughal;
 
 public class Digits {
     public static void main(String[] args) {

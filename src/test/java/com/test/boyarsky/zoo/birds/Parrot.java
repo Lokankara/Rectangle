@@ -1,6 +1,6 @@
-package com.test.boyarsky.zoo.birds;
+package test.java.com.test.boyarsky.zoo.birds;
 
-import com.test.heller.zoo.birds.Bird;
+import test.java.com.test.heller.zoo.birds.Bird;
 
 public class Parrot extends Bird {
 	public void fly() {

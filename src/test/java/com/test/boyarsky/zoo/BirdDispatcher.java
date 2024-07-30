@@ -1,14 +1,14 @@
 /**
  * 
  */
-package com.test.boyarsky.zoo;
+package test.java.com.test.boyarsky.zoo;
 
-import com.test.boyarsky.zoo.birds.Bird;
-import com.test.boyarsky.zoo.birds.Hawk;
-import com.test.boyarsky.zoo.birds.Nightingale;
-import com.test.boyarsky.zoo.birds.Pelican;
-import com.test.boyarsky.zoo.birds.Penguin;
-import com.test.boyarsky.zoo.birds.Strauss;
+import test.java.com.test.boyarsky.zoo.birds.Bird;
+import test.java.com.test.boyarsky.zoo.birds.Hawk;
+import test.java.com.test.boyarsky.zoo.birds.Nightingale;
+import test.java.com.test.boyarsky.zoo.birds.Pelican;
+import test.java.com.test.boyarsky.zoo.birds.Penguin;
+import test.java.com.test.boyarsky.zoo.birds.Strauss;
 
 /**
  * @author PPoliak

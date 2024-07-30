@@ -1,4 +1,4 @@
-package com.test.sanghera;
+package test.java.com.test.sanghera;
 
 class MyClass{
 	String hello = "Hello, Dear. Ch3, #1";

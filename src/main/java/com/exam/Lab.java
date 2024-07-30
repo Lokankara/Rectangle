@@ -1,4 +1,4 @@
-package com.exam;
+package main.java. com.ua.lab;
 
 import java.util.*;
 //import java.util.stream.Collectors;

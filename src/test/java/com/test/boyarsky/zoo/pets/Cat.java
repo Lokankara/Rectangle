@@ -1,4 +1,4 @@
-package com.test.boyarsky.zoo.pets;
+package test.java.com.test.boyarsky.zoo.pets;
 
 interface Walk {
 	public default int getSpeed() {
