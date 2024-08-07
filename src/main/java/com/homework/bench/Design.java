@@ -1,14 +1,14 @@
-package com.homework.exam;
+package com.homework.bench;
 
-public class KapustinDesign {
-    public static double averageLength (String text) {
+public class Design {
+    public static double averageLength(String text) {
         int sentences = 0;
         int words = 0;
 
-        for (int i = 0; i < text.length(); i++){
+        for (int i = 0; i < text.length(); i++) {
             if (text.charAt(i) == ' ') {
                 words++;
-            } else if (text.charAt(i) == '.'){
+            } else if (text.charAt(i) == '.') {
                 sentences++;
                 words++;
                 i++;
@@ -18,7 +18,7 @@ public class KapustinDesign {
         return (double) words / sentences;
     }
 
-    public static String concat (String a, String b){
+    public static String concat(String a, String b) {
 
         double averageText1 = averageLength(a);
         double averageText2 = averageLength(b);
@@ -30,7 +30,7 @@ public class KapustinDesign {
         }
     }
 
-    private static String firstTwoWords (String text) {
+    private static String firstTwoWords(String text) {
         boolean findFirstWord = true;
         int i = 0;
         for (; i < text.length(); i++) {
@@ -42,12 +42,12 @@ public class KapustinDesign {
                 }
             }
         }
-        return text.substring(0,i);
+        return text.substring(0, i);
     }
 
-    private static String finalTwoWords (String text) {
+    private static String finalTwoWords(String text) {
         boolean findFirstWord = true;
-        int i = text.length()-1;
+        int i = text.length() - 1;
         for (; i > -1; i--) {
             if (text.charAt(i) == ' ') {
                 if (findFirstWord) {

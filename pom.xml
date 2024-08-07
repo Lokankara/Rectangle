@@ -119,6 +119,11 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
+                            <groupId>org.openjdk.jmh</groupId>
+                            <artifactId>jmh-generator-annprocess</artifactId>
+                            <version>1.35</version>
+                        </path>
+                        <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
                             <version>${org.mapstruct.version}</version>

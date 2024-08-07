@@ -1,9 +1,18 @@
 package com.homework.bench;
 
-import org.openjdk.jmh.annotations.*;
-import org.openjdk.jmh.infra.Blackhole;
-
 import java.util.concurrent.TimeUnit;
+import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Fork;
+import org.openjdk.jmh.annotations.Measurement;
+import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Param;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.Timeout;
+import org.openjdk.jmh.annotations.Warmup;
+import org.openjdk.jmh.infra.Blackhole;
 
 @State(Scope.Benchmark)
 @Fork(value = 1, jvmArgs = {"-Xms512m", "-Xmx512m"})
@@ -31,7 +40,7 @@ public class Bench {
     @Benchmark
     public void testForFirstDesign(Blackhole bh) {
         for (int i = 0; i < 100_000; i++) {
-//            Slicer.concat(a, b);
+            bh.consume(Slicer.concat(a, b));
         }
 
 
@@ -40,14 +49,26 @@ public class Bench {
     @Benchmark
     public void testForSecondDesign(Blackhole bh) {
         for (int i = 0; i < 100_000; i++) {
-            KapustinDesign.concat(a, b);
+            bh.consume(Design.concat(a, b));
         }
     }
 
-//    @Benchmark
-//    public void testForMyFirstDesign(Blackhole bh) {
-//        for (int i = 0; i < 100_000; i++) {
-//            MyFirstDesign.concat(a, b);
-//        }
-//    }
+    @Benchmark
+    public void testCharArrayConcatDesign(Blackhole bh) {
+        for (int i = 0; i < 100_000; i++) {
+            bh.consume(CharArrayConcat .concat(a, b));
+        }
+    }
+    @Benchmark
+    public void testPlusOperatorConcatDesign(Blackhole bh) {
+        for (int i = 0; i < 100_000; i++) {
+            bh.consume(BufferConcat.concat(a, b));
+        }
+    }
+    @Benchmark
+    public void testForMyFirstDesign(Blackhole bh) {
+        for (int i = 0; i < 100_000; i++) {
+            bh.consume(BuilderDesign.concat(a, b));
+        }
+    }
 }
