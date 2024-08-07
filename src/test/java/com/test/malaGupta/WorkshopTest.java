@@ -10,6 +10,6 @@ class WorkshopTest {
         Laptop life = new Laptop();
         Workshop.repair(life);
         String memory = life.memory;
-        assertEquals("expectedMemoryValue", memory, "#ME-Q42: %s".formatted(memory));
+        assertEquals("2GB", memory, "#ME-Q42: %s".formatted(memory));
     }
 }
