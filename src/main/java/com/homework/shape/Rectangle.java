@@ -1,5 +1,6 @@
-package com.ua.lab.homework.shape;
+package com.homework.shape;
 
+import java.awt.Point;
 import static java.lang.StrictMath.pow;
 import static java.lang.StrictMath.sqrt;
 
@@ -64,7 +65,6 @@ public class Rectangle {
         boolean Ch = ay1 > by2;
         boolean dG = by1 < ay2;
 
-//        if (x1 > x2 || y1 > y2) {
         if (Af || bE || Ch || dG) {
             result = ("перетину немає");
         } else if (AF && CH || AF && DG || BE && CH || BE && DG) {

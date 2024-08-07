@@ -1,4 +1,4 @@
-package test.java.com.test.boyarsky;
+package com.test.boyarsky;
 
 import java.util.ArrayList;
 import java.util.List;

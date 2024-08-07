@@ -1,4 +1,4 @@
-package test.java.com.test.boyarsky.zoo.aquarium;
+package com.test.boyarsky.zoo.aquarium;
 
 class Reptile {
 	public void layEggs() { // - final

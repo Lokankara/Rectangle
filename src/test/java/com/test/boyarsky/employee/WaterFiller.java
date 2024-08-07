@@ -1,9 +1,9 @@
 /**
  * 
  */
-package test.java.com.test.boyarsky.employee;
+package com.test.boyarsky.employee;
 
-import test.java.com.test.boyarsky.zoo.aquarium.jellies.Water;
+import com.test.boyarsky.zoo.aquarium.jellies.Water;
 
 /**
  * @author PPoliak

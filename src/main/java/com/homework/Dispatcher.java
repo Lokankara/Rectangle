@@ -25,18 +25,10 @@ public class Dispatcher {
 
         String[] csvFiles;
         File file = new File(dir);
-        FilenameFilter filter = new FilenameFilter() {
-            @Override
-            public boolean accept(File f, String name) {
-                return name.endsWith(ext);
-            }
-        };
+        FilenameFilter filter = (f, name) -> name.endsWith(ext);
         csvFiles = file.list(filter);
         System.out.printf("Filtered by CSV = %s%n", Arrays.toString(csvFiles));
-
-        for (String csvFile : csvFiles) {
-            readFile(csvFile);
-        }
+        Arrays.stream(Objects.requireNonNull(csvFiles)).forEach(Dispatcher::readFile);
 
         saveToFile(quart, fraction[0]);
         saveToFile(half, fraction[1]);
@@ -45,10 +37,8 @@ public class Dispatcher {
 
 //        Controller.sorting(List.of(bottles), "volume");
 //        List.of(bottles).forEach(System.out::println);
-//
 //        Controller.sorting(List.of(bottles), "material");
 //        List.of(bottles).forEach(System.out::println);
-//
 //        Controller.sorting(List.of(bottles), "drink");
 //        List.of(bottles).forEach(System.out::println);
 
@@ -89,14 +79,12 @@ public class Dispatcher {
         }
     }
 
-
     @SneakyThrows
     private static void parseFile(String csvFile, String[] split) {
         int n = split.length;
         int step = 6;
 
         if (split.length <= 5) {
-//            System.out.printf("%s: ", csvFile);
             bottleMapper(new Bottle(), split);
         } else {
             System.out.printf("%s -> %s%n", Arrays.toString(split), csvFile);
@@ -160,22 +148,3 @@ public class Dispatcher {
         }
     }
 }
-
-class Controller {
-    public static void sorting(List<Bottle> bottles, String string) {
-        switch (string) {
-            case "material":
-                bottles.sort(new Bottle.SortByMaterial());
-                break;
-            case "drink":
-                bottles.sort(new Bottle.SortByDrink());
-                break;
-            case "volume":
-                bottles.sort(new Bottle.SortByVolume());
-                break;
-            default:
-                Collections.sort(bottles);
-        }
-    }
-}
-

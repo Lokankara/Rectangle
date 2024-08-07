@@ -56,7 +56,6 @@ class GateRunnable implements Runnable {
         }
 
         if (!busList.isEmpty()) {
-//            System.out.println("Thread:" + Thread.currentThread().getId() + " Количество заходов: " + ++countForTest);
             howManyBusesAreWaiting(busList);
         }
     }
@@ -69,8 +68,6 @@ class GateRunnable implements Runnable {
 
         } else {
             busList.forEach(Bus::busArrived);
-            // Если нужно проверить что незаполненый приезжает последним
-//            busList.forEach(bus -> new Thread(bus).start());
         }
 
         if (!newFamiliesList.isEmpty()) {

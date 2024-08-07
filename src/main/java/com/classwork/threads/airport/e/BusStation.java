@@ -1,10 +1,13 @@
 package com.classwork.threads.airport.e;
 
-import org.apache.log4j.Logger;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
+@Getter
+@Setter
 public class BusStation {
-
-    private static final Logger log = Logger.getLogger(BusStation.class);
 
     private Bus bus;
 
@@ -12,9 +15,6 @@ public class BusStation {
     private int countPassengersInStation;
     private int x;
     private int y;
-
-    public BusStation() {
-    }
 
     public BusStation(int numberStation, int x, int countPassengersInStation) {
         this.numberStation = numberStation;
@@ -29,7 +29,7 @@ public class BusStation {
 
         try {
             while (flag) {
-                synchronized(this) {
+                synchronized (this) {
                     this.wait();
 
                     if (bus.getRoute() == route && bus.getFreePlacesBus() > 0) {
@@ -49,14 +49,9 @@ public class BusStation {
             }
 
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
-
         return null;
-    }
-
-    public Bus getBus() {
-        return bus;
     }
 
     public void busInStation(Bus bus) {
@@ -75,36 +70,4 @@ public class BusStation {
             this.notifyAll();
         }
     }
-
-    public int getNumberStation() {
-        return numberStation;
-    }
-
-    public void setNumberStation(int numberStation) {
-        this.numberStation = numberStation;
-    }
-
-    public int getCountPassengersInStation() {
-        return countPassengersInStation;
-    }
-
-    public void setCountPassengersInStation(int countPassengersInStation) {
-        this.countPassengersInStation = countPassengersInStation;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-} 
+}

@@ -1,15 +1,20 @@
-//package com.test.malaGupta;
-//
-//class Whale {
-//	public static void main(String args[]) {
-//		boolean hungry = false;
-//		while (hungry = true) {
-//			++Fish.count;
-//		}
-//		System.out.println(Fish.count);
-//	}
-//}
-//
-//class Fish {
-//	static byte count;
-//}
+package com.test.malaGupta;
+
+class Whale {
+    public static void main(String[] args) {
+        boolean hungry = true;
+        while (hungry) {
+            ++Fish.count;
+            hungry = Fish.isFeed();
+            System.out.print(".");
+        }
+    }
+}
+
+class Fish {
+    static byte count;
+
+    public static boolean isFeed() {
+        return count >= 0;
+    }
+}

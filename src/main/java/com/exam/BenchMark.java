@@ -1,4 +1,4 @@
-//package  com.ua.lab;
+//package com.exam;
 //
 //import org.openjdk.jmh.runner.Runner;
 //import org.openjdk.jmh.runner.RunnerException;

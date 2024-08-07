@@ -1,10 +1,10 @@
 /**
  * 
  */
-package test.java.com.test.boyarsky.zoo.pets;
+package com.test.boyarsky.zoo.pets;
 
-import test.java.com.test.boyarsky.zoo.CanBark;
-import test.java.com.test.boyarsky.zoo.Mammal;
+import com.test.boyarsky.zoo.CanBark;
+import com.test.boyarsky.zoo.Mammal;
 
 /**
  * @author PPoliak

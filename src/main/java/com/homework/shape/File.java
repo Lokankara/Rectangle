@@ -1,4 +1,4 @@
-//package com.ua.lab.homework;
+//package com.homework;
 //
 //import java.io.*;
 //import java.util.ArrayList;

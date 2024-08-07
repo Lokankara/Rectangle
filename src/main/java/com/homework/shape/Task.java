@@ -1,4 +1,4 @@
-package com.ua.lab.homework.shape;
+package com.homework.shape;
 
 public class Task {
     private static int min = 1, max = 7;

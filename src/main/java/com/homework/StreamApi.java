@@ -1,4 +1,4 @@
-package com.ua.lab.homework;
+package com.homework;
 
 //divide the array into two collections:
 //+ negative and positive numbers,

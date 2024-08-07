@@ -1,6 +1,4 @@
-package com.ua.lab.exam;
-
-import com.ua.lab.exam.Clazz;
+package com.exam;
 
 import java.util.Arrays;
 import java.util.List;

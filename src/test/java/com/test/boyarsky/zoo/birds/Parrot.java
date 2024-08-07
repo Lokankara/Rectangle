@@ -1,4 +1,4 @@
-package test.java.com.test.boyarsky.zoo.birds;
+package com.test.boyarsky.zoo.birds;
 
 import test.java.com.test.heller.zoo.birds.Bird;
 

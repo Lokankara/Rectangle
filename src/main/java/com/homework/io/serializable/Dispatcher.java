@@ -1,7 +1,7 @@
 package com.homework.io.serializable;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Dispatcher {
 	private final static String outputfileShip = "SHIPS";
@@ -27,10 +27,10 @@ public class Dispatcher {
 		}
 	}
 
-	private static void execute(ArrayList<Vehicle> arrayList, String outputfile) {
+	private static void execute(List<Vehicle> arrayList, String outputfile) {
 		Collections.sort(arrayList);
 		controller.write(arrayList, outputfile);
-		ArrayList<Vehicle> vehicles = controller.read(outputfile);
+		List<Vehicle> vehicles = controller.read(outputfile);
 		controller.check(arrayList, vehicles);
 	}
 }

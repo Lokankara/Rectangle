@@ -1,4 +1,4 @@
-package com.ua.lab.exam;
+package com.exam;
 
 public class Clazz {
     int id;

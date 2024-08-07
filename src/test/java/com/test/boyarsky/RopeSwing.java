@@ -1,4 +1,4 @@
-package test.java.com.test.boyarsky;
+package com.test.boyarsky;
 
 public class RopeSwing {
 	private static Rope rope1 = new Rope();

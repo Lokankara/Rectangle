@@ -1,25 +1,25 @@
 /**
- * 
+ *
  */
-package test.java.com.test.boyarsky.zoo;
+package com.test.boyarsky.zoo;
 
 /**
  * @author PPoliak
  *
  */
 abstract class Insect implements HasExoskeleton {
-	abstract int getNumberOfSections();
+    abstract int getNumberOfSections();
 
-	public Insect() {
-	}
+    public Insect() {
+    }
 }
 
 interface HasExoskeleton {
-	public static String Number = "";
-	public static String num = "";
+    public static String Number = "";
+    public static String num = "";
 
-//	private String s = "";
+    //	private String s = "";
 //	final String fine = 0;
 //	protected String Num;
-	abstract int getNumberOfLegs();
+    abstract int getNumberOfLegs();
 }

@@ -1,6 +1,6 @@
 package com.homework.shape;
 
-class Point extends Shape {
+class Point extends Figure {
 
 	protected int x;
 	protected int y;

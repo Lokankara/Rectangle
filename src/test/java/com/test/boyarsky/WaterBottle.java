@@ -1,12 +1,12 @@
-package test.java.com.test.boyarsky;
+package com.test.boyarsky;
 
 public class WaterBottle {
-	private String brand;
-	private boolean empty;
+    private String brand;
+    private boolean empty;
 
-	public static void main(String[] args) {
-		WaterBottle wb = new WaterBottle();
-		System.out.print("Empty = " + wb.empty);
-		System.out.print(", Brand = " + wb.brand);
-	}
+    public static void main(String[] args) {
+        WaterBottle wb = new WaterBottle();
+        System.out.print("Empty = " + wb.empty);
+        System.out.print(", Brand = " + wb.brand);
+    }
 }

@@ -1,4 +1,4 @@
-//package com.ua.lab.homework.shape;
+//package com.homework.shape;
 //
 //import java.util.ArrayList;
 //import java.util.List;

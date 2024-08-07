@@ -1,10 +1,13 @@
 package com.classwork.threads.airport.e;
 
-import org.apache.log4j.Logger;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
+@Setter
+@Getter
 public class Bus implements Runnable {
-
-    private static final Logger log = Logger.getLogger(Bus.class);
 
     private BusStation station;
     private final Object monitor = new Object();
@@ -14,7 +17,7 @@ public class Bus implements Runnable {
     private int countPassenger;
     private double travelSpeed;
     private int route;
-    private boolean flag2; //fixed DeadLock
+    private boolean flag2;
     private boolean direction;
     private double x;
     private int y;
@@ -57,7 +60,7 @@ public class Bus implements Runnable {
         x = 0;
         route = 0;
 
-        for (int i = 0; x <= (Constants.magicNumber + travelSpeed);) {
+        for (int i = 0; x <= (Constants.magicNumber + travelSpeed); ) {
             if (i < Constants.STATIONS_COUNT_LIST_FIRST_LINE.size()) {
                 if (Constants.STATIONS_COUNT_LIST_FIRST_LINE.get(i).getX() <= x) {
 
@@ -83,7 +86,7 @@ public class Bus implements Runnable {
         x = (Constants.magicNumber + travelSpeed);
         route = 1;
 
-        for (int i = Constants.STATIONS_COUNT_LIST_LAST_LINE.size() - 1; x >= Constants.minX;) {
+        for (int i = Constants.STATIONS_COUNT_LIST_LAST_LINE.size() - 1; x >= Constants.minX; ) {
             if (i >= 0) {
                 if (Constants.STATIONS_COUNT_LIST_LAST_LINE.get(i).getX() >= x) {
 
@@ -158,76 +161,12 @@ public class Bus implements Runnable {
                 }
 
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
     }
 
     public synchronized void notifyAllPassengerInBus() {
         this.notifyAll();
-    }
-
-    public int getName() {
-        return name;
-    }
-
-    public BusStation getStation() {
-        return station;
-    }
-
-    public void setStation(BusStation station) {
-        this.station = station;
-    }
-
-    public int getMaxCapacityBus() {
-        return maxCapacityBus;
-    }
-
-    public int getCountPassenger() {
-        return countPassenger;
-    }
-
-    public double getTravelSpeed() {
-        return travelSpeed;
-    }
-
-    public int getRoute() {
-        return route;
-    }
-
-    public void setRoute(int route) {
-        this.route = route;
-    }
-
-    public boolean isFlag2() {
-        return flag2;
-    }
-
-    public void setFlag2(boolean flag2) {
-        this.flag2 = flag2;
-    }
-
-    public boolean isDirection() {
-        return direction;
-    }
-
-    public void setDirection(boolean direction) {
-        this.direction = direction;
-    }
-
-    public double getX() {
-        return x;
-    }
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 }

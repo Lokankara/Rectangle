@@ -1,4 +1,4 @@
-//package com.ua.lab.homework.shape;
+//package com.homework.shape;
 //
 //import org.openjdk.jmh.annotations.*;
 //import org.openjdk.jmh.infra.Blackhole;

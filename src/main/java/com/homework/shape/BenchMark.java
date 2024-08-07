@@ -1,4 +1,4 @@
-//package com.ua.lab.homework.shape;
+//package com.homework.shape;
 //
 //import org.openjdk.jmh.runner.Runner;
 //import org.openjdk.jmh.runner.RunnerException;

@@ -1,18 +1,21 @@
 package com.classwork.threads.airport.e;
 
-import org.apache.log4j.Logger;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
+@NoArgsConstructor
+@Getter
+@Setter
 public class Passenger implements Runnable {
-
-    private static final Logger log = Logger.getLogger(Passenger.class);
 
     private int name;
     private int zoneStart;
     private int zoneStop;
     private int route;
 
-    public Passenger() {
-    }
 
     public Passenger(int name, int zoneStart, int zoneStop, int route) {
         log.info("Passenger " + name + " goes to stop " + zoneStart + " wants to get to stop " + zoneStop);
@@ -37,25 +40,5 @@ public class Passenger implements Runnable {
                     .passengersInStation(getName(), route)
                     .passengersInBus(getName(), getZoneStop());
         }
-    }
-
-    public int getName() {
-        return name;
-    }
-
-    public int getZoneStart() {
-        return zoneStart;
-    }
-
-    public int getZoneStop() {
-        return zoneStop;
-    }
-
-    public int getRoute() {
-        return route;
-    }
-
-    public void setRoute(int route) {
-        this.route = route;
     }
 }

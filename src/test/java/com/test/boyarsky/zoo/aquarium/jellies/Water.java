@@ -1,7 +1,7 @@
 /**
  * 
  */
-package test.java.com.test.boyarsky.zoo.aquarium.jellies;
+package com.test.boyarsky.zoo.aquarium.jellies;
 
 /**
  * @author PPoliak

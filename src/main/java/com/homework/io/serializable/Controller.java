@@ -1,58 +1,55 @@
 package com.homework.io.serializable;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class Controller {
 
-	private final Dao dao = new Dao();
+    private final Dao dao = new Dao();
 
-	public ArrayList<Vehicle> getPlanes() {
-		return dao.airplanes();
-	}
-	
-	public ArrayList<Vehicle> getShips() {
-		return dao.ships();
-	}
+    public List<Vehicle> getPlanes() {
+        return dao.airplanes();
+    }
 
-	public void write(ArrayList<Vehicle> values, String outputfile) {
+    public List<Vehicle> getShips() {
+        return dao.ships();
+    }
 
-		try (ObjectOutputStream output = new ObjectOutputStream(
-				new FileOutputStream(outputfile))) {
+    public void write(List<Vehicle> values, String outputfile) {
 
-			output.writeObject(values);
-			
-			System.out.printf("File %s was written%n", outputfile);
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}	
-	}
+        try (ObjectOutputStream output = new ObjectOutputStream(
+                new FileOutputStream(outputfile))) {
 
-	public ArrayList<Vehicle> read(String outputfile) {
-		ArrayList<Vehicle> values = new ArrayList<>();
+            output.writeObject(values);
 
-		try (ObjectInputStream input = new ObjectInputStream(
-				new FileInputStream(outputfile))) {
+            System.out.printf("File %s was written%n", outputfile);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
-			values = (ArrayList<Vehicle>) input.readObject();
+    public List<Vehicle> read(String outputfile) {
+        List<Vehicle> values = new ArrayList<>();
 
-			System.out.printf("File %s was read%n", outputfile);
-		} catch (IOException | ClassNotFoundException e) {
-			System.out.printf("%s%n", e.getMessage());
-		}
-		return values;
-	}
+        try (ObjectInputStream input = new ObjectInputStream(
+                new FileInputStream(outputfile))) {
 
-	public void check(ArrayList<Vehicle> array, ArrayList<Vehicle> file) {
-		for (int i = 0; i < file.size(); i++) {
-			assertEquals(file.get(i), array.get(i));
-			System.out.printf("%s%n", file.get(i));
-		}		
-	}
+            values = (List<Vehicle>) input.readObject();
+
+            System.out.printf("File %s was read%n", outputfile);
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.printf("%s%n", e.getMessage());
+        }
+        return values;
+    }
+
+    public void check(List<Vehicle> array, List<Vehicle> file) {
+        IntStream.range(0, file.size()).forEach(i -> System.out.printf("%s = %s%n", file.get(i), array.get(i)));
+    }
 }

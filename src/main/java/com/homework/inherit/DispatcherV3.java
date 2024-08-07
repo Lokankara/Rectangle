@@ -297,7 +297,6 @@
 //	}
 //
 //	public Auto(int price, int wheels2) {
-//		// TODO Auto-generated constructor stub
 //	}
 //
 //	public String owner() {

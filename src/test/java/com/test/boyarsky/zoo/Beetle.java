@@ -1,25 +1,21 @@
 /**
- * 
+ *
  */
-package test.java.com.test.boyarsky.zoo;
+package com.test.boyarsky.zoo;
 
 /**
  * @author PPoliak
- *
  */
 public class Beetle extends Insect {
-	public int getNumberOfLegs() { return 6; }
+    public int getNumberOfLegs() {
+        return 6;
+    }
 
-	/**
-	 * 
-	 */
-	public Beetle() {
-		// TODO Auto-generated constructor stub
-	}
+    public Beetle() {
+    }
 
-	@Override
-	public int getNumberOfSections() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int getNumberOfSections() {
+        return 0;
+    }
 }

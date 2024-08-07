@@ -6,10 +6,6 @@ public class QA implements Runnable {
 
 	private String answer;
 
-	public QA() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public static void main(String[] args) {
 		Runnable run = new QA();
 		Thread tread = new Thread(run);

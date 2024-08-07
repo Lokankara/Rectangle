@@ -1,4 +1,4 @@
-package com.exam;
+package com.homework.exam;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package com.exam;
+package com.homework.exam;
 
 public class KapustinDesign {
     public static double averageLength (String text) {

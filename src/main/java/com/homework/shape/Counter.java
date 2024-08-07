@@ -1,11 +1,11 @@
-package com.ua.lab.homework.shape;
+package com.homework.shape;
 
 import java.util.concurrent.CountDownLatch;
 
 
 class Counter implements Runnable {
     private static int COUNTER = 0;
-    private CountDownLatch latch;
+    private final CountDownLatch latch;
 
     public Counter(CountDownLatch latch) {
         this.latch = latch;

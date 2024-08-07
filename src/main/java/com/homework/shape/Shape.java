@@ -1,4 +1,4 @@
-package com.ua.lab.homework.shape;
+package com.homework.shape;
 
 public class Shape {
     public static final String ENTER = "\n";

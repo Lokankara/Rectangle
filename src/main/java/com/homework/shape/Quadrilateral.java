@@ -1,7 +1,7 @@
 package com.homework.shape;
 
 
-class Quadrilateral extends Shape {
+class Quadrilateral extends Figure {
 
 	Point a;
 	Point b;

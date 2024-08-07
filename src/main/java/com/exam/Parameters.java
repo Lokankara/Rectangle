@@ -1,4 +1,4 @@
-package  com.ua.lab;
+package com.exam;
 
 class Account {
 String owner;

@@ -1,1 +1,1 @@
-package com.ua.lab.homework.mvc;
+package com.homework.mvc;

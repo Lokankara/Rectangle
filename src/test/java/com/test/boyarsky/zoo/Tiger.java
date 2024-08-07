@@ -1,27 +1,19 @@
 /**
- * 
+ *
  */
 package com.test.boyarsky.zoo;
 
+import com.test.heller.Animal;
+
 /**
  * @author PPoliak
- *
  */
 public class Tiger extends Animal {
-	private int age;
-	private String name;
+    public Tiger(int age, String name) {
+        super(age, name);
+    }
 
-	private void roar() {
-		System.out.println("The " + getAge() + " year old tiger says: Argthhh!");
-	}
-
-	@Override
-	public  int getAge() {
-		return age;
-	}
-
-	@Override
-	public String getName() {
-		return name;
-	}
+    private void roar() {
+        System.out.println("The " + getAge() + " year old tiger says: Argthhh!");
+    }
 }

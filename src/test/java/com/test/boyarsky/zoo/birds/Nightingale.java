@@ -1,12 +1,12 @@
-package test.java.com.test.boyarsky.zoo.birds;
+package com.test.boyarsky.zoo.birds;
 
 public class Nightingale extends Bird {
-	public Nightingale() {
-		referenceCount++;
-	}
+    public Nightingale() {
+        referenceCount++;
+    }
 
-	@Override
-	public String toString() {
-		return  getClass() + "#" + hashCode();
-		}	
+    @Override
+    public String toString() {
+        return getClass() + "#" + hashCode();
+    }
 }

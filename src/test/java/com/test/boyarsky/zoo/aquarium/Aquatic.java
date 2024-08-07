@@ -1,4 +1,4 @@
-package test.java.com.test.boyarsky.zoo.aquarium;
+package com.test.boyarsky.zoo.aquarium;
 
 public interface Aquatic extends CanSwim {
 	public default int getNumberOfGills(int input) {

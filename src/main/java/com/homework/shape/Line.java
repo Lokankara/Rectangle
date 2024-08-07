@@ -3,7 +3,7 @@ package com.homework.shape;
 import static java.lang.StrictMath.pow;
 import static java.lang.StrictMath.sqrt;
 
-class Line extends Shape {
+class Line extends Figure {
 
 	private Point a;
 	private Point b;

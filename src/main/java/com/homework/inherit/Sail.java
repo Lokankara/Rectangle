@@ -13,7 +13,6 @@
 //	 * 
 //	 */
 //	public Sail() {
-//		// TODO Auto-generated constructor stub
 //	}
 //
 //}

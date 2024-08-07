@@ -1,6 +1,8 @@
-package com.ua.lab.homework.mvc;
+package com.homework.mvc;
 
 import java.util.ArrayList;
+import lombok.Getter;
+import lombok.Setter;
 
 class Service {
 	private static ArrayList<Entity> entities = new ArrayList<>();
@@ -17,7 +19,6 @@ class Service {
 		for (Entity entity : entities) {
 			System.out.println(entity);
 		}
-		;
 	}
 }
 
@@ -101,6 +102,8 @@ class ArgsMvc {
 	}
 }
 
+@Setter
+@Getter
 class Entity {
 	private String type;
 	private int mark;
@@ -110,22 +113,6 @@ class Entity {
 		this.mark = mark;
 		this.value = value;
 		this.setType(type);
-	};
-
-	public int getMark() {
-		return mark;
-	}
-
-	public void setMark(int mark) {
-		this.mark = mark;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	public void setValue(String value) {
-		this.value = value;
 	}
 
 	@Override
@@ -133,11 +120,4 @@ class Entity {
 		return type + " {mark: " + mark + ", value: " + value + "}";
 	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package test.java.com.test.boyarsky;
+package com.test.boyarsky;
 
 /**
  * @author PPoliak

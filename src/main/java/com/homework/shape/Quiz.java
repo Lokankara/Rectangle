@@ -1,11 +1,11 @@
-package com.ua.lab.homework.shape;
+package com.homework.shape;
 
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
 public interface Quiz {
-    static  int COUNTER = 0;
+     int COUNTER = 0;
     //    static Map m = new TreeMap<>();
 //    static Map<Object, ? super ArrayList> m = new LinkedHashMap<Object, ArrayList>();
 //    static Map<Object, ?> m = new LinkedHashMap<Object, Object>();

@@ -12,9 +12,7 @@ public class Main {
 		System.out.println("Arrive " + arrivalList.size() + " planes");
 //		Tester.setFamilyForTest(new Family(4, "Millers", 1, "Kiev"));
 //        Tester.setEveryoneTravelToOneDirection(arrivalList, "Kiev");
-//
 		BorderService.arrivalToAirport(arrivalList);
-//
 		Tester.getTestHowManyPeopleTravelToEachDirection();
         Tester.getAllFamilies();
 

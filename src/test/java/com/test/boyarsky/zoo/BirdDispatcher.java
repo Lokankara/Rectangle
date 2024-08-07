@@ -1,14 +1,14 @@
 /**
- * 
+ *
  */
-package test.java.com.test.boyarsky.zoo;
+package com.test.boyarsky.zoo;
 
-import test.java.com.test.boyarsky.zoo.birds.Bird;
-import test.java.com.test.boyarsky.zoo.birds.Hawk;
-import test.java.com.test.boyarsky.zoo.birds.Nightingale;
-import test.java.com.test.boyarsky.zoo.birds.Pelican;
-import test.java.com.test.boyarsky.zoo.birds.Penguin;
-import test.java.com.test.boyarsky.zoo.birds.Strauss;
+import com.test.boyarsky.zoo.birds.Bird;
+import com.test.boyarsky.zoo.birds.Hawk;
+import com.test.boyarsky.zoo.birds.Nightingale;
+import com.test.boyarsky.zoo.birds.Pelican;
+import com.test.boyarsky.zoo.birds.Penguin;
+import com.test.boyarsky.zoo.birds.Strauss;
 
 /**
  * @author PPoliak
@@ -16,33 +16,33 @@ import test.java.com.test.boyarsky.zoo.birds.Strauss;
  */
 public class BirdDispatcher implements Dispatcher<Bird> {
 
-	private final static Bird[] birds = new Bird[10];
+    private final static Bird[] birds = new Bird[10];
 
-	public BirdDispatcher() {
-	}
+    public BirdDispatcher() {
+    }
 
-	public static void main(String[] args) {
-		Beetle beetle = new Beetle();
-	
-		Nightingale florence = new Nightingale();
-		System.out.println("Before: " + Bird.getRefCount());
-		florence.fly();
+    public static void main(String[] args) {
+        Beetle beetle = new Beetle();
 
-		Hawk h = new Hawk();
-		Pelican pelican = new Pelican();
-		Penguin p = new Penguin();
-		Strauss s = new Strauss();
-		birds[0] = h;
-		birds[1] = s;
-		birds[2] = p;
-		birds[3] = florence;
-		birds[3] = pelican;
-		for (Bird bird : birds) {
-			if(bird !=null) {
-				System.out.println(bird);
-				bird.move();
-			}
-		}
-		System.out.println("After: " + Bird.getRefCount());
-	}
+        Nightingale florence = new Nightingale();
+        System.out.println("Before: " + Bird.getRefCount());
+        florence.fly();
+
+        Hawk h = new Hawk();
+        Pelican pelican = new Pelican();
+        Penguin p = new Penguin();
+        Strauss s = new Strauss();
+        birds[0] = h;
+        birds[1] = s;
+        birds[2] = p;
+        birds[3] = florence;
+        birds[3] = pelican;
+        for (Bird bird : birds) {
+            if (bird != null) {
+                System.out.println(bird);
+                bird.move();
+            }
+        }
+        System.out.println("After: " + Bird.getRefCount());
+    }
 }

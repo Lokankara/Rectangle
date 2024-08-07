@@ -1,19 +1,16 @@
 /**
- * 
+ *
  */
-package test.java.com.test.boyarsky.zoo.aquarium.jellies;
+package com.test.boyarsky.zoo.aquarium.jellies;
 
 /**
  * @author PPoliak
- *
  */
 public class Jelly {
 
-	/**
-	 * 
-	 */
-	public Jelly() {
-		// TODO Auto-generated constructor stub
-	}
-
+    /**
+     *
+     */
+    public Jelly() {
+    }
 }

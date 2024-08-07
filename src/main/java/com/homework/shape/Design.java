@@ -1,4 +1,4 @@
-package com.ua.lab.homework.shape;
+package com.homework.shape;
 
 public class Design {
     public static double averageLength (String text) {
