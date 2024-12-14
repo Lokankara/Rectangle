@@ -1,22 +1,29 @@
-FROM quay.io/keycloak/keycloak as builder
+FROM quay.io/keycloak/keycloak:25.0 as builder
 
 # Enable health and metrics support
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
-ENV KEYCLOAK_USER=admin
-ENV KEYCLOAK_PASSWORD=secret
-ENV KEYCLOAK_ADMIN=admin
-ENV KEYCLOAK_ADMIN_PASSWORD=secret
-ENV KC_BOOTSTRAP_ADMIN_USERNAME=admin
-ENV KC_BOOTSTRAP_ADMIN_PASSWORD=secret
-#ENV  KC_HOSTNAME=lokankara.rectangle.in
+
+# Configure a database vendor
+# ENV KC_DB=postgres
+
 WORKDIR /opt/keycloak
-RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg RSA -keysize 2048 -dname "CN=server" -alias server -ext "SAN:c=DNS:localhost,IP:127.0.0.1" -keystore conf/server.keystore
 RUN /opt/keycloak/bin/kc.sh build
 
-FROM quay.io/keycloak/keycloak
+FROM openjdk:21-bookworm
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 COPY ./realm.json /opt/keycloak/bin/
-RUN /opt/keycloak/bin/kc.sh import --file /opt/keycloak/bin/realm.json && rm /opt/keycloak/bin/realm.json
+RUN apt-get -y update && apt-get -y install curl
+USER root
+RUN adduser --uid 1000 --disabled-password --gecos "" --no-create-home keycloak
+RUN chown -R keycloak /opt
+RUN chmod -R u+rwx /opt
+
+USER keycloak
+ENV KEYCLOAK_IMPORT=/opt/keycloak/bin/realm.json
+ENV KC_FEATURES=token-exchange
+ENV KC_HEALTH_ENABLED=true
+ENV KC_METRICS_ENABLED=true
+
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
 CMD ["start-dev"]
