@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ArgumentsProvider;
 
 public class InsertDataProvider implements ArgumentsProvider {
     @Override
-    public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
+    public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {
         return Stream.of(
                 Arguments.of(new String[]{"harry", "potter"}, "ry", "changed", "harry changed potter"),
                 Arguments.of(new String[]{"ron", "weasley"}, "on", "inserted", "ron inserted weasley"),

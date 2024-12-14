@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ArgumentsProvider;
 
 public class LongerDataProvider implements ArgumentsProvider {
     @Override
-    public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
+    public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {
         return Stream.of(
                 Arguments.of(new String[]{"harry", "potter"}, List.of("harry", "snape"), " snape", 4),
                 Arguments.of(new String[]{"ron", "weasley"}, List.of("ron potter", "weasley potter"), " potter", 6),

@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ArgumentsProvider;
 
 public class CapitalizeDataProvider implements ArgumentsProvider {
     @Override
-    public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
+    public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {
         return Stream.of(
                 Arguments.of(new String[]{"harry", "potter"}, new String[]{"Harry", "Potter"}),
                 Arguments.of(new String[]{"ron", "weasley"}, new String[]{"Ron", "Weasley"}),
