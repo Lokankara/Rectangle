@@ -1,20 +1,12 @@
-FROM quay.io/keycloak/keycloak:latest as builder
-
-ENV KC_HEALTH_ENABLED=true
-ENV KC_METRICS_ENABLED=true
-
-ENV KC_DB=postgres
-
+FROM quay.io/keycloak/keycloak:25.0.1
+COPY testdata data/import
 WORKDIR /opt/keycloak
-RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg RSA -keysize 2048 -dname "CN=server" -alias server -ext "SAN:c=DNS:localhost,IP:127.0.0.1" -keystore conf/server.keystore
-RUN /opt/keycloak/bin/kc.sh build
-
-FROM quay.io/keycloak/keycloak:latest
-COPY --from=builder /opt/keycloak/ /opt/keycloak/
-
-ENV KC_DB=postgres
-ENV KC_DB_URL=jdbc:postgresql://oregon-postgres.render.com:5432/airbnb_26fn
-ENV KC_DB_USERNAME=admin
-ENV KC_DB_PASSWORD=admin
 ENV KC_HOSTNAME=localhost
+ENV KEYCLOAK_USER=admin
+ENV KEYCLOAK_PASSWORD=secret
+ENV KEYCLOAK_ADMIN=admin
+ENV KEYCLOAK_ADMIN_PASSWORD=secret
+ENV KC_HEALTH_ENABLED=true
+ENV KC_FEATURES=account-api,account3,authorization,client-policies,impersonation,docker,scripts,admin-fine-grained-authz
+RUN /opt/keycloak/bin/kc.sh import --file /data/import/gocloak-realm.json
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
