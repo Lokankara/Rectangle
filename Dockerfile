@@ -1,14 +1,17 @@
-FROM quay.io/keycloak/keycloak:25.0.1
-COPY testdata data/import
-WORKDIR /opt/keycloak
-ENV KC_HOSTNAME=localhost
-ENV KEYCLOAK_USER=admin
-ENV KEYCLOAK_PASSWORD=secret
-ENV KEYCLOAK_ADMIN=admin
-ENV KEYCLOAK_ADMIN_PASSWORD=secret
-ENV KC_HEALTH_ENABLED=true
-ENV KC_FEATURES=account-api,account3,authorization,client-policies,impersonation,docker,scripts,admin-fine-grained-authz
-RUN /opt/keycloak/bin/kc.sh import --file /data/import/gocloak-realm.json
-EXPOSE 8080
+FROM quay.io/keycloak/keycloak as builder
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--http-port=8080", "--import-realm"]
+# Enable health and metrics support
+ENV KC_HEALTH_ENABLED=true
+ENV KC_METRICS_ENABLED=true
+
+WORKDIR /opt/keycloak
+# for demonstration purposes only, please make sure to use proper certificates in production instead
+RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg RSA -keysize 2048 -dname "CN=server" -alias server -ext "SAN:c=DNS:localhost,IP:127.0.0.1" -keystore conf/server.keystore
+RUN /opt/keycloak/bin/kc.sh build
+
+FROM quay.io/keycloak/keycloak
+COPY --from=builder /opt/keycloak/ /opt/keycloak/
+COPY ./realm.json /opt/keycloak/bin/
+RUN /opt/keycloak/bin/kc.sh import --file /opt/keycloak/bin/realm.json && rm /opt/keycloak/bin/realm.json
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
+CMD ["start-dev"]
